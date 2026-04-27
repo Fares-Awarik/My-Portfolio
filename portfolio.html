@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fares Awarik — Laravel Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08080a;--bg-card:#111114;--bg-elevated:#19191d;--border:#222228;
+  --text:#eae8e3;--text-secondary:#8a8880;
+  --accent:oklch(0.75 0.15 70);--accent-glow:oklch(0.75 0.15 70 / 0.15);--accent-dim:oklch(0.55 0.10 70);
+  --mono:'JetBrains Mono',monospace;--heading:'DM Sans',sans-serif;--body:'IBM Plex Sans',sans-serif;
+}
+html{scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:var(--body);font-weight:400;line-height:1.65;font-size:16px}
+body{overflow-x:hidden;background:var(--bg)}
+a{color:inherit;text-decoration:none}
+::selection{background:oklch(0.75 0.15 70 / 0.3);color:#fff}
+
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+@media(min-width:640px){.container{padding:0 32px}}
+
+.section-label{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.section-label::before{content:'//';opacity:0.5}
+.section-title{font-family:var(--heading);font-size:clamp(24px,5vw,40px);font-weight:700;line-height:1.2;margin-bottom:16px;color:var(--text)}
+section{padding:72px 0;position:relative}
+@media(min-width:768px){section{padding:100px 0}}
+
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(234,232,227,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(234,232,227,0.02) 1px,transparent 1px);
+  background-size:60px 60px}
+.grid-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,oklch(0.75 0.15 70 / 0.06),transparent)}
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes spin-slow{from{transform:rotateY(0) rotateX(15deg)}to{transform:rotateY(360deg) rotateX(15deg)}}
+@keyframes pulse-glow{0%,100%{opacity:0.3}50%{opacity:0.7}}
+@keyframes text-reveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0% 0 0)}}
+
+/* Mobile nav drawer */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:rgba(8,8,10,0.97);
+  backdrop-filter:blur(16px);flex-direction:column;align-items:center;justify-content:center;gap:36px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--heading);font-size:28px;font-weight:600;color:var(--text-secondary);transition:color 0.2s}
+.mobile-menu a:hover{color:var(--text)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:767px){.hamburger{display:flex}.desktop-nav{display:none!important}}
+
+/* Hero responsive */
+.hero-grid{display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-3d{display:none!important}}
+
+/* Services / Projects grids */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+@media(max-width:480px){.services-grid,.projects-grid{grid-template-columns:1fr}}
+
+/* Project cards equal height */
+.projects-grid{align-items:stretch}
+.projects-grid .reveal-wrap{height:100%}
+.project-card{height:100%;display:flex;flex-direction:column;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;position:relative;transition:border-color 0.3s,box-shadow 0.3s;cursor:default}
+.project-card:hover{border-color:oklch(0.75 0.15 70 / 0.4);box-shadow:0 0 32px oklch(0.75 0.15 70 / 0.08)}
+.project-card-accent{height:3px;background:linear-gradient(90deg,var(--accent),transparent)}
+.project-card-body{padding:24px;display:flex;flex-direction:column;flex:1;gap:12px}
+.project-card-num{font-family:var(--mono);font-size:11px;color:var(--accent);opacity:0.6;letter-spacing:0.1em}
+.project-card-title{font-family:var(--heading);font-weight:600;font-size:clamp(15px,2vw,18px);color:var(--text);line-height:1.3}
+.project-card-desc{font-size:clamp(12px,1.5vw,13.5px);font-weight:300;color:var(--text-secondary);line-height:1.75;flex:1}
+.project-card-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:4px}
+.project-card-tags{display:flex;flex-wrap:wrap;gap:6px}
+.project-card-tag{font-family:var(--mono);font-size:10px;color:var(--accent);background:oklch(0.75 0.15 70 / 0.08);padding:3px 9px;border-radius:5px;border:1px solid oklch(0.75 0.15 70 / 0.12);letter-spacing:0.02em}
+.project-card-status{font-family:var(--mono);font-size:10px;font-weight:600;color:#08080a;background:var(--accent);padding:3px 10px;border-radius:5px;white-space:nowrap}
+@keyframes card-line{from{width:0}to{width:100%}}
+
+/* Contact links */
+.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+
+/* Stack chips */
+.stack-chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+
+/* Tweaks panel smaller on mobile */
+@media(max-width:480px){
+  .twk-panel{width:calc(100vw - 24px)!important;right:12px!important;bottom:12px!important}
+}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="noise"></div>
+<div id="root" style="position:relative;z-index:2"></div>
+
+<script type="text/babel">
+
+/* ── Tweaks Panel ──────────────────────────────────────────────────────────── */
+
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;overflow-x:hidden;min-height:0;scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;overflow-wrap:anywhere}
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+`;
+
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+  }, []);
+  return [values, setTweak];
+}
+
+function TweaksPanel({ title = 'Tweaks', children }) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const PAD = 12;
+
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current; if (!panel) return;
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    offsetRef.current = {
+      x: Math.min(Math.max(PAD, offsetRef.current.x), Math.max(PAD, window.innerWidth - w - PAD)),
+      y: Math.min(Math.max(PAD, offsetRef.current.y), Math.max(PAD, window.innerHeight - h - PAD)),
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(clampToViewport) : null;
+    if (ro) { ro.observe(document.documentElement); return () => ro.disconnect(); }
+    window.addEventListener('resize', clampToViewport);
+    return () => window.removeEventListener('resize', clampToViewport);
+  }, [open, clampToViewport]);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => { setOpen(false); window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*'); };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current; if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX, sy = e.clientY;
+    const startRight = window.innerWidth - r.right, startBottom = window.innerHeight - r.bottom;
+    const move = (ev) => { offsetRef.current = { x: startRight-(ev.clientX-sx), y: startBottom-(ev.clientY-sy) }; clampToViewport(); };
+    const up = () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div ref={dragRef} className="twk-panel" style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" aria-label="Close" onMouseDown={e => e.stopPropagation()} onClick={dismiss}>✕</button>
+        </div>
+        <div className="twk-body">{children}</div>
+      </div>
+    </>
+  );
+}
+
+function TweakSection({ label, title, children }) {
+  return <><div className="twk-sect">{label || title}</div>{children}</>;
+}
+
+function TweakRow({ label, value, children, inline = false }) {
+  return (
+    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
+      <div className="twk-lbl"><span>{label}</span>{value != null && <span className="twk-val">{value}</span>}</div>
+      {children}
+    </div>
+  );
+}
+
+function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
+  return (
+    <TweakRow label={label} value={`${value}${unit}`}>
+      <input type="range" className="twk-slider" min={min} max={max} step={step} value={value} onChange={e => onChange(Number(e.target.value))} />
+    </TweakRow>
+  );
+}
+
+function TweakToggle({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'} role="switch" aria-checked={!!value} onClick={() => onChange(!value)}><i /></button>
+    </div>
+  );
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  const opts = options.map(o => typeof o === 'object' ? o : { value: o, label: o });
+  const idx = Math.max(0, opts.findIndex(o => o.value === value));
+  const n = opts.length;
+  const valueRef = React.useRef(value); valueRef.current = value;
+  const segAt = (cx) => {
+    const r = trackRef.current.getBoundingClientRect();
+    return opts[Math.max(0, Math.min(n-1, Math.floor(((cx-r.left-2)/(r.width-4))*n)))].value;
+  };
+  const onPointerDown = (e) => {
+    setDragging(true);
+    const v0 = segAt(e.clientX); if (v0 !== valueRef.current) onChange(v0);
+    const move = ev => { if (!trackRef.current) return; const v = segAt(ev.clientX); if (v !== valueRef.current) onChange(v); };
+    const up = () => { setDragging(false); window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); };
+    window.addEventListener('pointermove', move); window.addEventListener('pointerup', up);
+  };
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown} className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
+        <div className="twk-seg-thumb" style={{ left:`calc(2px + ${idx} * (100% - 4px) / ${n})`, width:`calc((100% - 4px) / ${n})` }} />
+        {opts.map(o => <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>{o.label}</button>)}
+      </div>
+    </TweakRow>
+  );
+}
+
+/* ── App ───────────────────────────────────────────────────────────────────── */
+
+const { useState, useEffect, useRef, useCallback, useMemo } = React;
+
+const TWEAK_DEFAULTS = { accentHue: 49, showParticles: true, lang: 'en' };
+
+const T = {
+  en: {
+    hello: "Hello, I'm", name: 'Fares Awarik', role: 'Laravel Developer',
+    heroDesc: 'I build practical websites and business systems with clear structure, simple user experience, and real business value.',
+    viewProjects: 'View Projects', contactMe: 'Contact Me',
+    serviceTags: ['Business Websites','Web Applications','Admin Panels','Booking Systems','WhatsApp Solutions'],
+    aboutLabel: 'About Me', aboutTitle: 'Building practical solutions\nfor real business needs',
+    aboutP1: 'I am a Laravel developer focused on building practical digital solutions for real business needs. My work includes business websites, admin panels, booking systems, and simple web applications that are clear, useful, and easy to manage.',
+    aboutP2: 'I care about structure, usability, and building projects that solve real problems — not just look good. Every line of code should serve a purpose, and every interface should be designed with the end user in mind.',
+    servicesLabel: 'What I Build', servicesTitle: 'Services',
+    servicesDesc: 'End-to-end web solutions built with Laravel, designed to support real business needs from day one.',
+    serviceCards: [
+      { title: 'Business Websites', desc: 'Professional websites that present your business clearly and build trust with potential clients.' },
+      { title: 'Web Applications', desc: 'Custom web applications tailored to your workflow — from internal tools to client-facing platforms.' },
+      { title: 'Admin Panels', desc: 'Clean and practical dashboards to manage content, listings, users, and business operations.' },
+      { title: 'Booking & Appointment Systems', desc: 'Simple scheduling systems for appointments, requests, and daily business workflow.' },
+      { title: 'WhatsApp-Based Solutions', desc: 'Website integrations and contact flows that connect customers directly to your WhatsApp.' },
+      { title: 'Custom Business Systems', desc: 'Tailored systems designed around your specific business logic, processes, and needs.' },
+    ],
+    projectsLabel: 'Featured Projects', projectsTitle: 'Recent Work',
+    projectsDesc: 'A selection of real client projects and Laravel systems currently in development.',
+    projects: [
+      { title: 'Prego Education', desc: 'Educational website built with Laravel to present services, universities, and the student application journey in a clear and structured way.', tags: ['Laravel','Blade','MySQL'] },
+      { title: 'Gümüşhane Yayla Bal', desc: 'Business website built to present honey products professionally, improve trust, and support WhatsApp-based sales.', tags: ['Laravel','WhatsApp','Bootstrap'] },
+      { title: 'Al Mustafa Legal Consultancy', desc: 'Professional legal consultancy website focused on clarity, trust, and structured presentation of services.', tags: ['Laravel','PHP','Blade'] },
+      { title: 'Appointment System', desc: 'Laravel-based appointment and workflow system designed to manage bookings, requests, and daily business operations.', tags: ['Laravel','MySQL','Admin'], status: 'In Progress' },
+      { title: 'Multi-Tenant System', desc: 'Scalable Laravel system structure designed to support multiple business accounts within one platform.', tags: ['Laravel','Multi-Tenant','SaaS'], status: 'In Progress' },
+    ],
+    stackLabel: 'Tech Stack', stackTitle: 'Tools I Work With',
+    contactLabel: 'Get in Touch', contactTitle: "Let's Work Together",
+    contactDesc: 'If you need a business website, admin panel, appointment system, or a practical web solution, feel free to contact me.',
+    contactLinkLabels: ['WhatsApp','Email','LinkedIn','GitHub','Instagram'],
+    footer: '© 2026 Fares Awarik — Built with Laravel & care.',
+    navItems: ['Home','About','Services','Projects','Contact'],
+  },
+  ar: {
+    hello: 'مرحباً، أنا', name: 'فارس عواريك', role: 'Laravel Developer',
+    heroDesc: 'أبني مواقع ويب وأنظمة أعمال عملية بهيكلة واضحة، وتجربة مستخدم بسيطة، وقيمة حقيقية للأعمال.',
+    viewProjects: 'عرض المشاريع', contactMe: 'تواصل معي',
+    serviceTags: ['مواقع الشركات','تطبيقات الويب','لوحات التحكم','أنظمة الحجز','حلول واتساب'],
+    aboutLabel: 'عني', aboutTitle: 'أبني حلولًا عملية\nلاحتياجات الأعمال الحقيقية',
+    aboutP1: 'أنا مطور Laravel أركز على بناء حلول رقمية عملية لاحتياجات الأعمال الحقيقية. يشمل عملي مواقع الشركات، لوحات التحكم، أنظمة الحجز، وتطبيقات ويب بسيطة وواضحة وسهلة الإدارة.',
+    aboutP2: 'أهتم بالهيكلة وسهولة الاستخدام وبناء مشاريع تحل مشاكل حقيقية، وليس مجرد واجهات جميلة. كل جزء من المشروع يجب أن يخدم هدفًا واضحًا، وكل واجهة يجب أن تُصمَّم مع وضع المستخدم النهائي في الاعتبار.',
+    servicesLabel: 'ما أبنيه', servicesTitle: 'الخدمات',
+    servicesDesc: 'حلول ويب عملية مبنية بـ Laravel ومصممة لدعم احتياجات الأعمال الحقيقية من اليوم الأول.',
+    serviceCards: [
+      { title: 'مواقع الشركات', desc: 'مواقع احترافية تعرض عملك بوضوح وتبني الثقة مع العملاء المحتملين.' },
+      { title: 'تطبيقات الويب', desc: 'تطبيقات ويب مخصصة لسير عملك، من الأدوات الداخلية إلى المنصات الموجهة للعملاء.' },
+      { title: 'لوحات التحكم', desc: 'لوحات عملية ونظيفة لإدارة المحتوى، الإعلانات، المستخدمين، وعمليات الأعمال.' },
+      { title: 'أنظمة الحجز والمواعيد', desc: 'أنظمة بسيطة لتنظيم المواعيد، الطلبات، وسير العمل اليومي.' },
+      { title: 'حلول واتساب', desc: 'تكاملات ونماذج تواصل تربط العملاء مباشرة بواتساب الخاص بعملك.' },
+      { title: 'أنظمة أعمال مخصصة', desc: 'أنظمة مصممة حسب منطق عملك، عملياتك، واحتياجاتك الخاصة.' },
+    ],
+    projectsLabel: 'مشاريع مميزة', projectsTitle: 'أعمال حديثة',
+    projectsDesc: 'مجموعة من مشاريع حقيقية للعملاء وأنظمة Laravel قيد التطوير.',
+    projects: [
+      { title: 'Prego Education', desc: 'موقع تعليمي مبني بـ Laravel لعرض الخدمات والجامعات ورحلة تقديم الطلاب بطريقة واضحة ومنظمة.', tags: ['Laravel','Blade','MySQL'] },
+      { title: 'Gümüşhane Yayla Bal', desc: 'موقع أعمال لعرض منتجات العسل باحترافية، وتعزيز الثقة، ودعم المبيعات عبر واتساب.', tags: ['Laravel','WhatsApp','Bootstrap'] },
+      { title: 'المصطفى للاستشارات القانونية', desc: 'موقع استشارات قانونية احترافي يركز على الوضوح، الثقة، وعرض الخدمات بشكل منظم.', tags: ['Laravel','PHP','Blade'] },
+      { title: 'نظام المواعيد', desc: 'نظام مبني بـ Laravel لإدارة المواعيد، الطلبات، وسير العمل اليومي للأعمال.', tags: ['Laravel','MySQL','Admin'], status: 'قيد التطوير' },
+      { title: 'نظام متعدد المستأجرين', desc: 'هيكل نظام Laravel قابل للتوسع لدعم عدة حسابات أعمال ضمن منصة واحدة.', tags: ['Laravel','Multi-Tenant','SaaS'], status: 'قيد التطوير' },
+    ],
+    stackLabel: 'الأدوات', stackTitle: 'الأدوات التي أستخدمها',
+    contactLabel: 'تواصل', contactTitle: 'لنعمل معًا',
+    contactDesc: 'إذا كنت تحتاج إلى موقع لشركتك، لوحة تحكم، نظام مواعيد، أو حل ويب عملي، يمكنك التواصل معي.',
+    contactLinkLabels: ['واتساب','البريد الإلكتروني','LinkedIn','GitHub','Instagram'],
+    footer: '© 2026 فارس عواريك — مبني بـ Laravel وعناية.',
+    navItems: ['الرئيسية','عنّي','الخدمات','المشاريع','تواصل'],
+  },
+  tr: {
+    hello: 'Merhaba, ben', name: 'Fares Awarik', role: 'Laravel Developer',
+    heroDesc: 'Net yapı, sade kullanıcı deneyimi ve gerçek iş değeri sunan pratik web siteleri ve iş sistemleri geliştiriyorum.',
+    viewProjects: 'Projeleri Gör', contactMe: 'İletişime Geç',
+    serviceTags: ['İş Web Siteleri','Web Uygulamaları','Yönetim Panelleri','Randevu Sistemleri','WhatsApp Çözümleri'],
+    aboutLabel: 'Hakkımda', aboutTitle: 'Gerçek iş ihtiyaçları için\npratik çözümler geliştiriyorum',
+    aboutP1: 'Gerçek iş ihtiyaçları için pratik dijital çözümler geliştiren bir Laravel geliştiricisiyim. İş web siteleri, yönetim panelleri, randevu sistemleri ve kullanımı kolay web uygulamaları geliştiriyorum.',
+    aboutP2: 'Yapı, kullanılabilirlik ve gerçek sorunları çözen projeler benim için önemlidir. Sadece iyi görünen değil, amaca hizmet eden ve son kullanıcıyı düşünerek tasarlanan çözümler üretmeye odaklanıyorum.',
+    servicesLabel: 'Ne Geliştiriyorum', servicesTitle: 'Hizmetler',
+    servicesDesc: 'Laravel ile geliştirilen, işletmenizin gerçek ihtiyaçlarını desteklemek için tasarlanmış pratik web çözümleri.',
+    serviceCards: [
+      { title: 'İş Web Siteleri', desc: 'İşletmenizi net şekilde tanıtan ve potansiyel müşterilerle güven oluşturan profesyonel web siteleri.' },
+      { title: 'Web Uygulamaları', desc: 'İş akışınıza özel, iç kullanım veya müşteri odaklı web uygulamaları.' },
+      { title: 'Yönetim Panelleri', desc: 'İçerik, ilan, kullanıcı ve iş süreçlerini yönetmek için temiz ve pratik paneller.' },
+      { title: 'Randevu Sistemleri', desc: 'Randevular, talepler ve günlük iş akışı için basit planlama sistemleri.' },
+      { title: 'WhatsApp Tabanlı Çözümler', desc: 'Müşterilerinizi doğrudan WhatsApp üzerinden iletişime yönlendiren web entegrasyonları.' },
+      { title: 'Özel İş Sistemleri', desc: 'İş mantığınıza, süreçlerinize ve ihtiyaçlarınıza göre tasarlanmış özel sistemler.' },
+    ],
+    projectsLabel: 'Öne Çıkan Projeler', projectsTitle: 'Son Çalışmalar',
+    projectsDesc: 'Gerçek müşteri projeleri ve geliştirme aşamasındaki Laravel sistemlerinden bir seçki.',
+    projects: [
+      { title: 'Prego Education', desc: 'Hizmetleri, üniversiteleri ve öğrenci başvuru sürecini net ve yapılandırılmış bir şekilde sunmak için Laravel ile geliştirilmiş eğitim web sitesi.', tags: ['Laravel','Blade','MySQL'] },
+      { title: 'Gümüşhane Yayla Bal', desc: 'Bal ürünlerini profesyonel şekilde sunmak, güven oluşturmak ve WhatsApp üzerinden satış sürecini desteklemek için geliştirilmiş iş web sitesi.', tags: ['Laravel','WhatsApp','Bootstrap'] },
+      { title: 'Al Mustafa Hukuk Danışmanlığı', desc: 'Netlik, güven ve hizmetlerin düzenli sunumuna odaklanan profesyonel hukuk danışmanlığı web sitesi.', tags: ['Laravel','PHP','Blade'] },
+      { title: 'Randevu Sistemi', desc: 'Randevuları, talepleri ve günlük iş akışını yönetmek için tasarlanan Laravel tabanlı sistem.', tags: ['Laravel','MySQL','Admin'], status: 'Devam Ediyor' },
+      { title: 'Çok Kiracılı Sistem', desc: 'Tek platform içinde birden fazla işletme hesabını desteklemek için tasarlanan ölçeklenebilir Laravel sistem yapısı.', tags: ['Laravel','Multi-Tenant','SaaS'], status: 'Devam Ediyor' },
+    ],
+    stackLabel: 'Teknolojiler', stackTitle: 'Kullandığım Araçlar',
+    contactLabel: 'İletişim', contactTitle: 'Birlikte Çalışalım',
+    contactDesc: 'Bir iş web sitesi, yönetim paneli, randevu sistemi veya pratik bir web çözümüne ihtiyacınız varsa benimle iletişime geçebilirsiniz.',
+    contactLinkLabels: ['WhatsApp','Email','LinkedIn','GitHub','Instagram'],
+    footer: '© 2026 Fares Awarik — Laravel ve özenle geliştirildi.',
+    navItems: ['Ana Sayfa','Hakkımda','Hizmetler','Projeler','İletişim'],
+  }
+};
+
+const LangContext = React.createContext('en');
+function useT() { return T[React.useContext(LangContext)]; }
+
+function useMousePosition() {
+  const [pos, setPos] = useState({ x: 0.5, y: 0.5 });
+  useEffect(() => {
+    const h = e => setPos({ x: e.clientX/window.innerWidth, y: e.clientY/window.innerHeight });
+    window.addEventListener('mousemove', h, { passive: true });
+    return () => window.removeEventListener('mousemove', h);
+  }, []);
+  return pos;
+}
+
+function useReveal(threshold = 0.1) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, visible];
+}
+
+function Reveal({ children, delay = 0, style = {}, className = '' }) {
+  const [ref, visible] = useReveal();
+  return (
+    <div ref={ref} style={{
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'translateY(0)' : 'translateY(28px)',
+      transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+      ...style
+    }} className={className}>{children}</div>
+  );
+}
+
+function TiltCard({ children, style = {}, className = '' }) {
+  const cardRef = useRef(null);
+  const [transform, setTransform] = useState('perspective(800px) rotateX(0) rotateY(0)');
+  const [glare, setGlare] = useState({ x: 50, y: 50, opacity: 0 });
+  const isMobile = window.innerWidth < 768;
+  const handleMove = useCallback(e => {
+    if (isMobile) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX-rect.left)/rect.width, y = (e.clientY-rect.top)/rect.height;
+    setTransform(`perspective(800px) rotateX(${(0.5-y)*10}deg) rotateY(${(x-0.5)*10}deg) scale3d(1.02,1.02,1.02)`);
+    setGlare({ x: x*100, y: y*100, opacity: 0.1 });
+  }, [isMobile]);
+  const handleLeave = useCallback(() => {
+    setTransform('perspective(800px) rotateX(0) rotateY(0) scale3d(1,1,1)');
+    setGlare({ x: 50, y: 50, opacity: 0 });
+  }, []);
+  return (
+    <div ref={cardRef} onMouseMove={handleMove} onMouseLeave={handleLeave} className={className}
+      style={{ transform, transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1)', transformStyle: 'preserve-3d', position: 'relative', overflow: 'hidden', ...style }}>
+      {children}
+      <div style={{ position:'absolute', inset:0, pointerEvents:'none', borderRadius:'inherit',
+        background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(255,255,255,${glare.opacity}), transparent 60%)` }}></div>
+    </div>
+  );
+}
+
+function Particles({ count = 20 }) {
+  const particles = useMemo(() => Array.from({ length: count }, (_, i) => ({
+    id: i, x: Math.random()*100, y: Math.random()*100, size: 2+Math.random()*2.5,
+    dur: 15+Math.random()*25, delay: Math.random()*-20, opacity: 0.12+Math.random()*0.2
+  })), [count]);
+  return (
+    <div style={{ position:'fixed', inset:0, zIndex:1, pointerEvents:'none', overflow:'hidden' }}>
+      {particles.map(p => (
+        <div key={p.id} style={{ position:'absolute', left:`${p.x}%`, top:`${p.y}%`, width:p.size, height:p.size, borderRadius:'50%',
+          background:'var(--accent)', opacity:p.opacity, animation:`float ${p.dur}s ease-in-out ${p.delay}s infinite` }}></div>
+      ))}
+    </div>
+  );
+}
+
+function WireframeShape({ mouse }) {
+  const rx = (mouse.y-0.5)*30, ry = (mouse.x-0.5)*30;
+  return (
+    <div style={{ width:280, height:280, position:'relative', transform:`rotateX(${rx}deg) rotateY(${ry}deg)`, transformStyle:'preserve-3d', transition:'transform 0.15s ease-out' }}>
+      {[{rX:0,rY:0,tZ:90},{rX:0,rY:180,tZ:90},{rX:0,rY:90,tZ:90},{rX:0,rY:-90,tZ:90},{rX:90,rY:0,tZ:90},{rX:-90,rY:0,tZ:90}].map((f,i)=>(
+        <div key={i} style={{ position:'absolute',width:180,height:180,left:50,top:50,border:'1px solid oklch(0.75 0.15 70 / 0.2)',borderRadius:4,
+          transform:`rotateX(${f.rX}deg) rotateY(${f.rY}deg) translateZ(${f.tZ}px)`, transformStyle:'preserve-3d', backfaceVisibility:'visible' }}></div>
+      ))}
+      <div style={{ position:'absolute',width:70,height:70,left:105,top:105, animation:'spin-slow 20s linear infinite', transformStyle:'preserve-3d' }}>
+        {[0,60,120,180,240,300].map((rot,i)=>(
+          <div key={i} style={{ position:'absolute',width:70,height:70,left:0,top:0, border:'1px solid var(--accent)', borderRadius:2, opacity:0.5,
+            transform:`rotateY(${rot}deg) rotateX(45deg)`, transformStyle:'preserve-3d' }}></div>
+        ))}
+      </div>
+      {[[-1,-1,-1],[1,-1,-1],[-1,1,-1],[1,1,-1],[-1,-1,1],[1,-1,1],[-1,1,1],[1,1,1]].map((c,i)=>(
+        <div key={`d${i}`} style={{ position:'absolute',width:6,height:6,borderRadius:'50%', background:'var(--accent)',
+          left:137+c[0]*90, top:137+c[1]*90, transform:`translateZ(${c[2]*90}px)`, animation:`pulse-glow 3s ease-in-out ${i*0.3}s infinite` }}></div>
+      ))}
+    </div>
+  );
+}
+
+function LangSwitcher({ lang, setLang }) {
+  const langs = ['en','ar','tr'];
+  const labels = { en:'EN', ar:'ع', tr:'TR' };
+  return (
+    <div style={{ display:'flex', gap:3, background:'var(--bg-elevated)', borderRadius:8, padding:3, border:'1px solid var(--border)' }}>
+      {langs.map(l => (
+        <button key={l} onClick={() => setLang(l)} style={{
+          background: lang===l ? 'var(--accent)' : 'transparent', color: lang===l ? '#08080a' : 'var(--text-secondary)',
+          border:'none', borderRadius:6, padding:'4px 10px', cursor:'pointer',
+          fontFamily: l==='ar' ? 'var(--body)' : 'var(--mono)', fontSize:12, fontWeight:600, transition:'all 0.2s'
+        }}>{labels[l]}</button>
+      ))}
+    </div>
+  );
+}
+
+function Nav({ lang, setLang }) {
+  const t = useT();
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState('hero');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navIds = ['hero','about','services','projects','contact'];
+
+  useEffect(() => {
+    const h = () => {
+      setScrolled(window.scrollY > 40);
+      for (let i = navIds.length-1; i >= 0; i--) {
+        const el = document.getElementById(navIds[i]);
+        if (el && el.getBoundingClientRect().top <= 200) { setActive(navIds[i]); break; }
+      }
+    };
+    window.addEventListener('scroll', h, { passive: true });
+    return () => window.removeEventListener('scroll', h);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+  }, [menuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
+
+  return (
+    <>
+      <nav style={{ position:'fixed',top:0,left:0,right:0,zIndex:100,
+        background: scrolled ? 'rgba(8,8,10,0.92)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(16px) saturate(1.5)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
+        transition:'all 0.4s cubic-bezier(0.16,1,0.3,1)', padding:'0 20px' }}>
+        <div style={{ maxWidth:1120,margin:'0 auto',display:'flex',justifyContent:'space-between',alignItems:'center',height:60 }}>
+          <a href="#hero" style={{ fontFamily:'var(--heading)',fontWeight:700,fontSize:17, zIndex:101 }}>
+            fares<span style={{ color:'var(--accent)' }}>.</span>awarik
+          </a>
+          <div className="desktop-nav" style={{ display:'flex',gap:20,fontSize:14,fontWeight:500,fontFamily:'var(--body)',alignItems:'center' }}>
+            {navIds.map((id,i) => (
+              <a key={id} href={`#${id}`} style={{ color: active===id ? 'var(--accent)' : 'var(--text-secondary)', transition:'color 0.3s', position:'relative', padding:'4px 0' }}>
+                {t.navItems[i]}
+                {active===id && <span style={{ position:'absolute',bottom:-2,left:0,right:0,height:2,background:'var(--accent)',borderRadius:1 }}></span>}
+              </a>
+            ))}
+            <LangSwitcher lang={lang} setLang={setLang} />
+          </div>
+          <button className={`hamburger${menuOpen?' open':''}`} onClick={() => setMenuOpen(v => !v)} aria-label="Menu" style={{ zIndex:101 }}>
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+
+      <div className={`mobile-menu${menuOpen?' open':''}`}>
+        {navIds.map((id,i) => (
+          <a key={id} href={`#${id}`} onClick={closeMenu}>{t.navItems[i]}</a>
+        ))}
+        <LangSwitcher lang={lang} setLang={setLang} />
+      </div>
+    </>
+  );
+}
+
+function Hero() {
+  const mouse = useMousePosition();
+  const t = useT();
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => { setTimeout(() => setLoaded(true), 100); }, []);
+  const anim = d => ({ opacity: loaded?1:0, transform: loaded?'translateY(0)':'translateY(30px)', transition: `all 0.8s cubic-bezier(0.16,1,0.3,1) ${d}s` });
+  return (
+    <section id="hero" style={{ minHeight:'100vh',display:'flex',alignItems:'center',paddingTop:72 }}>
+      <div className="container">
+        <div className="hero-grid">
+          <div style={{ maxWidth:620 }}>
+            <div style={anim(0.1)}>
+              <p style={{ fontFamily:'var(--mono)',fontSize:13,color:'var(--accent)',marginBottom:20,letterSpacing:'0.06em' }}>
+                <span style={{ display:'inline-block',width:28,height:1,background:'var(--accent)',verticalAlign:'middle',marginRight:10 }}></span>
+                {t.hello}
+              </p>
+            </div>
+            <div style={anim(0.2)}>
+              <h1 style={{ fontFamily:'var(--heading)',fontSize:'clamp(38px,8vw,76px)',fontWeight:700,lineHeight:1.05,marginBottom:12,
+                background:'linear-gradient(135deg, var(--text) 0%, var(--accent) 100%)',
+                WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text' }}>{t.name}</h1>
+            </div>
+            <div style={anim(0.35)}>
+              <p style={{ fontFamily:'var(--heading)',fontSize:'clamp(17px,3.5vw,26px)',fontWeight:500,color:'var(--accent)',marginBottom:24,display:'flex',alignItems:'center',gap:10 }}>
+                <span style={{ display:'inline-block',width:8,height:8,borderRadius:'50%',background:'var(--accent)',flexShrink:0,animation:'pulse-glow 2s ease-in-out infinite' }}></span>
+                {t.role}
+              </p>
+            </div>
+            <div style={anim(0.5)}>
+              <p style={{ maxWidth:480,color:'var(--text-secondary)',fontSize:'clamp(14px,2vw,17px)',fontWeight:300,lineHeight:1.75,marginBottom:36 }}>{t.heroDesc}</p>
+            </div>
+            <div style={{ display:'flex',gap:12,flexWrap:'wrap',marginBottom:40,...anim(0.6) }}>
+              <a href="#projects" style={{
+                background:'var(--accent)',color:'#08080a',padding:'13px 28px',borderRadius:10,fontWeight:600,fontSize:15,fontFamily:'var(--heading)',
+                boxShadow:'0 0 30px var(--accent-glow)', display:'inline-block'
+              }}>{t.viewProjects}</a>
+              <a href="#contact" style={{ border:'1px solid var(--border)',color:'var(--text)',padding:'13px 28px',borderRadius:10,fontWeight:500,fontSize:15,
+                fontFamily:'var(--heading)',background:'rgba(255,255,255,0.02)', display:'inline-block' }}
+              >{t.contactMe}</a>
+            </div>
+            <div style={{ display:'flex',flexWrap:'wrap',gap:'6px 16px',fontFamily:'var(--mono)',fontSize:11,color:'var(--text-secondary)',...anim(0.75) }}>
+              {t.serviceTags.map((s,i) => (
+                <span key={i} style={{ display:'flex',alignItems:'center',gap:6 }}>
+                  {i>0 && <span style={{ color:'var(--accent)',opacity:0.4 }}>◆</span>}{s}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div style={{ perspective:800,display:'flex',alignItems:'center',justifyContent:'center' }} className="hero-3d">
+            <WireframeShape mouse={mouse} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function About() {
+  const t = useT();
+  return (
+    <section id="about" style={{ background:'linear-gradient(180deg, var(--bg-card) 0%, var(--bg) 100%)' }}>
+      <div className="container">
+        <Reveal><p className="section-label">{t.aboutLabel}</p></Reveal>
+        <Reveal delay={80}><h2 className="section-title">{t.aboutTitle.split('\n').map((l,i)=><React.Fragment key={i}>{i>0&&<br/>}{l}</React.Fragment>)}</h2></Reveal>
+        <Reveal delay={160}>
+          <div style={{ display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))',gap:20,marginTop:28 }}>
+            {[t.aboutP1, t.aboutP2].map((p,i) => (
+              <div key={i} style={{ padding:'24px 24px',borderRadius:12,border:'1px solid var(--border)',background:'rgba(255,255,255,0.02)' }}>
+                <p style={{ color:'var(--text-secondary)',fontSize:'clamp(13px,1.8vw,15px)',fontWeight:300,lineHeight:1.85 }}>{p}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function ServiceCard({ title, desc, index }) {
+  return (
+    <Reveal delay={index*60}>
+      <TiltCard style={{ background:'var(--bg-card)',border:'1px solid var(--border)',borderRadius:16,padding:'28px 24px',height:'100%',cursor:'default' }}>
+        <div style={{ width:44,height:44,borderRadius:10,background:'linear-gradient(135deg,var(--accent-glow),transparent)',
+          border:'1px solid oklch(0.75 0.15 70 / 0.2)',display:'flex',alignItems:'center',justifyContent:'center',
+          marginBottom:18,fontFamily:'var(--mono)',fontSize:14,color:'var(--accent)',fontWeight:500 }}>
+          {String(index+1).padStart(2,'0')}
+        </div>
+        <h3 style={{ fontFamily:'var(--heading)',fontWeight:600,fontSize:'clamp(15px,2vw,18px)',marginBottom:10 }}>{title}</h3>
+        <p style={{ color:'var(--text-secondary)',fontSize:'clamp(13px,1.5vw,14px)',fontWeight:300,lineHeight:1.7 }}>{desc}</p>
+      </TiltCard>
+    </Reveal>
+  );
+}
+
+function Services() {
+  const t = useT();
+  return (
+    <section id="services">
+      <div className="container">
+        <Reveal><p className="section-label">{t.servicesLabel}</p></Reveal>
+        <Reveal delay={80}><h2 className="section-title">{t.servicesTitle}</h2></Reveal>
+        <Reveal delay={120}><p style={{ color:'var(--text-secondary)',maxWidth:540,fontSize:'clamp(13px,1.8vw,15px)',fontWeight:300,lineHeight:1.7,marginBottom:40 }}>{t.servicesDesc}</p></Reveal>
+        <div className="services-grid">
+          {t.serviceCards.map((s,i) => <ServiceCard key={i} {...s} index={i} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProjectCard({ title, desc, tags, status, index }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <Reveal delay={index*80} style={{ height:'100%' }} className="reveal-wrap">
+      <div
+        className="project-card"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <div className="project-card-accent" style={{
+          background: hovered
+            ? 'linear-gradient(90deg, var(--accent), oklch(0.75 0.15 70 / 0.3))'
+            : 'linear-gradient(90deg, oklch(0.75 0.15 70 / 0.3), transparent)',
+          transition: 'background 0.4s'
+        }} />
+        <div className="project-card-body">
+          <span className="project-card-num">// {String(index+1).padStart(2,'0')}</span>
+          <h3 className="project-card-title">{title}</h3>
+          <p className="project-card-desc">{desc}</p>
+          <div className="project-card-footer">
+            <div className="project-card-tags">
+              {tags.map(tag => <span key={tag} className="project-card-tag">{tag}</span>)}
+            </div>
+            {status && <span className="project-card-status">{status}</span>}
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
+function Projects() {
+  const t = useT();
+  return (
+    <section id="projects" style={{ background:'linear-gradient(180deg,var(--bg-card) 0%,var(--bg) 100%)' }}>
+      <div className="container">
+        <Reveal><p className="section-label">{t.projectsLabel}</p></Reveal>
+        <Reveal delay={80}><h2 className="section-title">{t.projectsTitle}</h2></Reveal>
+        <Reveal delay={120}><p style={{ color:'var(--text-secondary)',maxWidth:540,fontSize:'clamp(13px,1.8vw,15px)',fontWeight:300,lineHeight:1.7,marginBottom:40 }}>{t.projectsDesc}</p></Reveal>
+        <div className="projects-grid">
+          {t.projects.map((p,i) => <ProjectCard key={i} {...p} index={i} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const techStack = ['Laravel','PHP','MySQL','Blade','Bootstrap','JavaScript','Git','GitHub'];
+
+function TechStack() {
+  const t = useT();
+  return (
+    <section id="stack">
+      <div className="container">
+        <Reveal><p className="section-label">{t.stackLabel}</p></Reveal>
+        <Reveal delay={80}><h2 className="section-title">{t.stackTitle}</h2></Reveal>
+        <Reveal delay={160}>
+          <div className="stack-chips">
+            {techStack.map((tech,i) => (
+              <Reveal key={tech} delay={180+i*50}>
+                <TiltCard style={{ fontFamily:'var(--mono)',fontSize:'clamp(12px,1.5vw,14px)',fontWeight:500,color:'var(--text)',background:'var(--bg-card)',
+                  border:'1px solid var(--border)',padding:'10px 20px',borderRadius:10,cursor:'default',display:'inline-flex',alignItems:'center',gap:8 }}>
+                  <span style={{ width:6,height:6,borderRadius:'50%',background:'var(--accent)',opacity:0.6,flexShrink:0 }}></span>
+                  {tech}
+                </TiltCard>
+              </Reveal>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+const contactLinks = [
+  { label:'WhatsApp', href:'https://wa.me/+905538604023', mono:'WA' },
+  { label:'Email', href:'mailto:fares119.fh@gmail.com', mono:'✉' },
+  { label:'LinkedIn', href:'https://www.linkedin.com/in/fares-awarik/?locale=en-US', mono:'in' },
+  { label:'GitHub', href:'https://github.com/Al-Thahabi-1', mono:'GH' },
+  { label:'Instagram', href:'https://www.instagram.com/fares.awarik/', mono:'IG' },
+];
+
+function Contact() {
+  const t = useT();
+  return (
+    <section id="contact" style={{ background:'linear-gradient(180deg,var(--bg-card) 0%,var(--bg) 100%)' }}>
+      <div className="container" style={{ textAlign:'center', maxWidth:640 }}>
+        <Reveal><p className="section-label" style={{ justifyContent:'center' }}>{t.contactLabel}</p></Reveal>
+        <Reveal delay={80}><h2 className="section-title" style={{ textAlign:'center' }}>{t.contactTitle}</h2></Reveal>
+        <Reveal delay={160}><p style={{ color:'var(--text-secondary)',fontSize:'clamp(13px,1.8vw,15px)',fontWeight:300,lineHeight:1.8,marginBottom:40 }}>{t.contactDesc}</p></Reveal>
+        <Reveal delay={240}>
+          <div className="contact-links">
+            {contactLinks.map((l, i) => (
+              <TiltCard key={l.label} style={{ background:'var(--bg-elevated)',border:'1px solid var(--border)',borderRadius:12,overflow:'hidden' }}>
+                <a href={l.href} target="_blank" rel="noopener" style={{ display:'flex',alignItems:'center',gap:10,padding:'13px 22px',fontFamily:'var(--heading)',fontSize:14,fontWeight:500 }}>
+                  <span style={{ fontFamily:'var(--mono)',fontSize:12,color:'var(--accent)',width:22,textAlign:'center' }}>{l.mono}</span>
+                  {t.contactLinkLabels[i]}
+                </a>
+              </TiltCard>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  const t = useT();
+  return (
+    <footer style={{ padding:'36px 20px',borderTop:'1px solid var(--border)',textAlign:'center' }}>
+      <p style={{ fontFamily:'var(--mono)',fontSize:11,color:'var(--text-secondary)' }}>{t.footer}</p>
+    </footer>
+  );
+}
+
+function App() {
+  const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const lang = tweaks.lang || 'en';
+  const isRtl = lang === 'ar';
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+  }, [lang, isRtl]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--accent', `oklch(0.75 0.15 ${tweaks.accentHue})`);
+    document.documentElement.style.setProperty('--accent-dim', `oklch(0.55 0.10 ${tweaks.accentHue})`);
+    document.documentElement.style.setProperty('--accent-glow', `oklch(0.75 0.15 ${tweaks.accentHue} / 0.15)`);
+  }, [tweaks.accentHue]);
+
+  return (
+    <LangContext.Provider value={lang}>
+      {tweaks.showParticles && <Particles count={20} />}
+      <Nav lang={lang} setLang={v => setTweak('lang', v)} />
+      <Hero />
+      <About />
+      <Services />
+      <Projects />
+      <TechStack />
+      <Contact />
+      <Footer />
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Theme">
+          <TweakSlider label="Accent Hue" value={tweaks.accentHue} onChange={v => setTweak('accentHue', v)} min={0} max={360} step={1} />
+          <TweakToggle label="Particles" value={tweaks.showParticles} onChange={v => setTweak('showParticles', v)} />
+        </TweakSection>
+        <TweakSection title="Language">
+          <TweakRadio label="Language" value={lang} onChange={v => setTweak('lang', v)} options={['en','ar','tr']} />
+        </TweakSection>
+      </TweaksPanel>
+    </LangContext.Provider>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
