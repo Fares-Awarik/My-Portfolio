@@ -79,6 +79,8 @@ section{padding:72px 0;position:relative}
 .project-card-tags{display:flex;flex-wrap:wrap;gap:6px}
 .project-card-tag{font-family:var(--mono);font-size:10px;color:var(--accent);background:oklch(0.75 0.15 70 / 0.08);padding:3px 9px;border-radius:5px;border:1px solid oklch(0.75 0.15 70 / 0.12);letter-spacing:0.02em}
 .project-card-status{font-family:var(--mono);font-size:10px;font-weight:600;color:#08080a;background:var(--accent);padding:3px 10px;border-radius:5px;white-space:nowrap}
+.project-card-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);border:1px solid oklch(0.75 0.15 70 / 0.25);padding:4px 12px;border-radius:6px;transition:background 0.2s,border-color 0.2s;white-space:nowrap}
+.project-card-link:hover{background:oklch(0.75 0.15 70 / 0.1);border-color:oklch(0.75 0.15 70 / 0.5)}
 @keyframes card-line{from{width:0}to{width:100%}}
 
 /* Contact links */
@@ -300,9 +302,9 @@ const T = {
     projectsLabel: 'Featured Projects', projectsTitle: 'Recent Work',
     projectsDesc: 'A selection of real client projects and Laravel systems currently in development.',
     projects: [
-      { title: 'Prego Education', desc: 'Educational website built with Laravel to present services, universities, and the student application journey in a clear and structured way.', tags: ['Laravel','Blade','MySQL'] },
-      { title: 'Gümüşhane Yayla Bal', desc: 'Business website built to present honey products professionally, improve trust, and support WhatsApp-based sales.', tags: ['Laravel','WhatsApp','Bootstrap'] },
-      { title: 'Al Mustafa Legal Consultancy', desc: 'Professional legal consultancy website focused on clarity, trust, and structured presentation of services.', tags: ['Laravel','PHP','Blade'] },
+      { title: 'Prego Education', desc: 'Educational website built with Laravel to present services, universities, and the student application journey in a clear and structured way.', tags: ['Laravel','Blade','MySQL'], url: 'https://eduprego.com/' },
+      { title: 'Gümüşhane Yayla Bal', desc: 'Business website built to present honey products professionally, improve trust, and support WhatsApp-based sales.', tags: ['Laravel','WhatsApp','Bootstrap'], url: 'https://gumushaneyayla.shop/' },
+      { title: 'Al Mustafa Legal Consultancy', desc: 'Professional legal consultancy website focused on clarity, trust, and structured presentation of services.', tags: ['Laravel','PHP','Blade'], url: 'https://almostafa.company/' },
       { title: 'Appointment System', desc: 'Laravel-based appointment and workflow system designed to manage bookings, requests, and daily business operations.', tags: ['Laravel','MySQL','Admin'], status: 'In Progress' },
       { title: 'Multi-Tenant System', desc: 'Scalable Laravel system structure designed to support multiple business accounts within one platform.', tags: ['Laravel','Multi-Tenant','SaaS'], status: 'In Progress' },
     ],
@@ -334,9 +336,9 @@ const T = {
     projectsLabel: 'مشاريع مميزة', projectsTitle: 'أعمال حديثة',
     projectsDesc: 'مجموعة من مشاريع حقيقية للعملاء وأنظمة Laravel قيد التطوير.',
     projects: [
-      { title: 'Prego Education', desc: 'موقع تعليمي مبني بـ Laravel لعرض الخدمات والجامعات ورحلة تقديم الطلاب بطريقة واضحة ومنظمة.', tags: ['Laravel','Blade','MySQL'] },
-      { title: 'Gümüşhane Yayla Bal', desc: 'موقع أعمال لعرض منتجات العسل باحترافية، وتعزيز الثقة، ودعم المبيعات عبر واتساب.', tags: ['Laravel','WhatsApp','Bootstrap'] },
-      { title: 'المصطفى للاستشارات القانونية', desc: 'موقع استشارات قانونية احترافي يركز على الوضوح، الثقة، وعرض الخدمات بشكل منظم.', tags: ['Laravel','PHP','Blade'] },
+      { title: 'Prego Education', desc: 'موقع تعليمي مبني بـ Laravel لعرض الخدمات والجامعات ورحلة تقديم الطلاب بطريقة واضحة ومنظمة.', tags: ['Laravel','Blade','MySQL'], url: 'https://eduprego.com/' },
+      { title: 'Gümüşhane Yayla Bal', desc: 'موقع أعمال لعرض منتجات العسل باحترافية، وتعزيز الثقة، ودعم المبيعات عبر واتساب.', tags: ['Laravel','WhatsApp','Bootstrap'], url: 'https://gumushaneyayla.shop/' },
+      { title: 'المصطفى للاستشارات القانونية', desc: 'موقع استشارات قانونية احترافي يركز على الوضوح، الثقة، وعرض الخدمات بشكل منظم.', tags: ['Laravel','PHP','Blade'], url: 'https://almostafa.company/' },
       { title: 'نظام المواعيد', desc: 'نظام مبني بـ Laravel لإدارة المواعيد، الطلبات، وسير العمل اليومي للأعمال.', tags: ['Laravel','MySQL','Admin'], status: 'قيد التطوير' },
       { title: 'نظام متعدد المستأجرين', desc: 'هيكل نظام Laravel قابل للتوسع لدعم عدة حسابات أعمال ضمن منصة واحدة.', tags: ['Laravel','Multi-Tenant','SaaS'], status: 'قيد التطوير' },
     ],
@@ -368,9 +370,9 @@ const T = {
     projectsLabel: 'Öne Çıkan Projeler', projectsTitle: 'Son Çalışmalar',
     projectsDesc: 'Gerçek müşteri projeleri ve geliştirme aşamasındaki Laravel sistemlerinden bir seçki.',
     projects: [
-      { title: 'Prego Education', desc: 'Hizmetleri, üniversiteleri ve öğrenci başvuru sürecini net ve yapılandırılmış bir şekilde sunmak için Laravel ile geliştirilmiş eğitim web sitesi.', tags: ['Laravel','Blade','MySQL'] },
-      { title: 'Gümüşhane Yayla Bal', desc: 'Bal ürünlerini profesyonel şekilde sunmak, güven oluşturmak ve WhatsApp üzerinden satış sürecini desteklemek için geliştirilmiş iş web sitesi.', tags: ['Laravel','WhatsApp','Bootstrap'] },
-      { title: 'Al Mustafa Hukuk Danışmanlığı', desc: 'Netlik, güven ve hizmetlerin düzenli sunumuna odaklanan profesyonel hukuk danışmanlığı web sitesi.', tags: ['Laravel','PHP','Blade'] },
+      { title: 'Prego Education', desc: 'Hizmetleri, üniversiteleri ve öğrenci başvuru sürecini net ve yapılandırılmış bir şekilde sunmak için Laravel ile geliştirilmiş eğitim web sitesi.', tags: ['Laravel','Blade','MySQL'], url: 'https://eduprego.com/' },
+      { title: 'Gümüşhane Yayla Bal', desc: 'Bal ürünlerini profesyonel şekilde sunmak, güven oluşturmak ve WhatsApp üzerinden satış sürecini desteklemek için geliştirilmiş iş web sitesi.', tags: ['Laravel','WhatsApp','Bootstrap'], url: 'https://gumushaneyayla.shop/' },
+      { title: 'Al Mustafa Hukuk Danışmanlığı', desc: 'Netlik, güven ve hizmetlerin düzenli sunumuna odaklanan profesyonel hukuk danışmanlığı web sitesi.', tags: ['Laravel','PHP','Blade'], url: 'https://almostafa.company/' },
       { title: 'Randevu Sistemi', desc: 'Randevuları, talepleri ve günlük iş akışını yönetmek için tasarlanan Laravel tabanlı sistem.', tags: ['Laravel','MySQL','Admin'], status: 'Devam Ediyor' },
       { title: 'Çok Kiracılı Sistem', desc: 'Tek platform içinde birden fazla işletme hesabını desteklemek için tasarlanan ölçeklenebilir Laravel sistem yapısı.', tags: ['Laravel','Multi-Tenant','SaaS'], status: 'Devam Ediyor' },
     ],
@@ -670,7 +672,7 @@ function Services() {
   );
 }
 
-function ProjectCard({ title, desc, tags, status, index }) {
+function ProjectCard({ title, desc, tags, status, url, index }) {
   const [hovered, setHovered] = useState(false);
   return (
     <Reveal delay={index*80} style={{ height:'100%' }} className="reveal-wrap">
@@ -694,6 +696,7 @@ function ProjectCard({ title, desc, tags, status, index }) {
               {tags.map(tag => <span key={tag} className="project-card-tag">{tag}</span>)}
             </div>
             {status && <span className="project-card-status">{status}</span>}
+            {url && <a href={url} target="_blank" rel="noopener noreferrer" className="project-card-link">↗ Visit Site</a>}
           </div>
         </div>
       </div>
