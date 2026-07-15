@@ -12,15 +12,15 @@ const T = {
     aboutLabel: 'ABOUT ME', aboutTitle: 'Practical solutions for real business needs',
     aboutP1: "I'm Fares Awarik, a Laravel developer based in Türkiye. I build business websites, admin panels, booking systems, and custom web applications for small and growing businesses.",
     aboutP2: 'My work spans education, pharmaceuticals, legal services, e-commerce, and service-based businesses. I focus on clear structure, practical workflows, and solutions that clients can actually use and manage.',
-    servicesLabel: 'What I Build', servicesTitle: 'Services',
-    servicesDesc: 'Laravel web solutions designed to work for your business from day one.',
+    servicesLabel: 'WHAT I BUILD', servicesTitle: 'Services built around real business needs',
+    servicesDesc: 'Practical web solutions designed to improve your online presence, simplify operations, and support business growth.',
     serviceCards: [
-      { title: 'Business Websites', desc: 'Professional websites that present your business clearly and build trust with potential clients.' },
-      { title: 'Web Applications', desc: 'Custom web apps tailored to your workflow — from internal tools to client-facing platforms.' },
-      { title: 'Admin Panels', desc: 'Clean, intuitive dashboards to manage your content, users, and business operations.' },
-      { title: 'Booking & Clinic Systems', desc: 'Appointment scheduling and patient management systems built for daily workflow.' },
-      { title: 'WhatsApp-Based Solutions', desc: 'Integrations that connect your website to WhatsApp for direct customer communication.' },
-      { title: 'Custom Business Systems', desc: 'Tailored systems designed around your specific business logic and processes.' },
+      { title: 'Business Websites', desc: 'Professional, mobile-friendly websites that build trust, explain your services clearly, and turn visitors into inquiries.' },
+      { title: 'Custom Laravel Systems', desc: 'Tailored web systems that organize workflows, data, users, and daily operations around how your business actually works.' },
+      { title: 'Admin Panels', desc: 'Practical dashboards for managing content, customers, bookings, products, and internal business operations.' },
+      { title: 'Booking & Appointment Systems', desc: 'Simple online booking flows that reduce manual messages and make scheduling easier for customers and staff.' },
+      { title: 'WhatsApp Integrations', desc: 'Connect website inquiries, contact forms, and customer actions directly to WhatsApp for faster communication.' },
+      { title: 'Website Maintenance & Improvements', desc: 'Bug fixes, responsive improvements, deployment support, feature additions, and ongoing maintenance for existing websites.' },
     ],
     projectsLabel: 'Featured Projects', projectsTitle: 'Recent Work',
     projectsDesc: 'Case-study notes for selected real projects and portfolio work, focused on the goal, my role, status, and available links.',
@@ -49,15 +49,15 @@ const T = {
     aboutLabel: 'عني', aboutTitle: 'حلول عملية مبنية على احتياجات حقيقية للأعمال',
     aboutP1: 'أنا فارس عواريك، مطور Laravel مقيم في تركيا. أبني مواقع أعمال، ولوحات إدارة، وأنظمة حجز، وتطبيقات ويب مخصصة للشركات الصغيرة والنامية.',
     aboutP2: 'عملت على مشاريع في التعليم، والأدوية، والاستشارات القانونية، والتجارة الإلكترونية، وقطاع الخدمات. أركز على البنية الواضحة، وسير العمل العملي، والحلول التي يستطيع العميل استخدامها وإدارتها فعليًا.',
-    servicesLabel: 'ما أبنيه', servicesTitle: 'الخدمات',
-    servicesDesc: 'حلول ويب عملية باستخدام Laravel، مصممة لتعمل لصالح عملك من اليوم الأول.',
+    servicesLabel: 'ماذا أبني', servicesTitle: 'خدمات مبنية على احتياجات حقيقية للأعمال',
+    servicesDesc: 'حلول ويب عملية تساعدك على تحسين حضورك الرقمي، وتبسيط العمل اليومي، ودعم نمو مشروعك.',
     serviceCards: [
-      { title: 'مواقع الأعمال', desc: 'مواقع احترافية تعرض عملك بوضوح وتبني الثقة مع العملاء المحتملين.' },
-      { title: 'تطبيقات الويب', desc: 'تطبيقات ويب مخصصة لسير عملك — من الأدوات الداخلية إلى المنصات الموجهة للعملاء.' },
-      { title: 'لوحات التحكم', desc: 'لوحات تحكم نظيفة وبديهية لإدارة المحتوى والمستخدمين وعمليات الأعمال.' },
-      { title: 'أنظمة الحجز والعيادات', desc: 'أنظمة جدولة المواعيد وإدارة المرضى مبنية لسير العمل اليومي.' },
-      { title: 'حلول واتساب', desc: 'تكاملات تربط موقعك بواتساب للتواصل المباشر مع العملاء.' },
-      { title: 'أنظمة أعمال مخصصة', desc: 'أنظمة مصممة حول منطق وعمليات عملك المحددة.' },
+      { title: 'مواقع الأعمال', desc: 'مواقع احترافية ومتوافقة مع الهاتف، تساعدك على بناء الثقة، وعرض خدماتك بوضوح، وتحويل الزوار إلى عملاء محتملين.' },
+      { title: 'أنظمة Laravel مخصصة', desc: 'أنظمة ويب مصممة حسب طريقة عمل مشروعك لتنظيم البيانات، والمستخدمين، وسير العمل، والعمليات اليومية.' },
+      { title: 'لوحات الإدارة', desc: 'لوحات تحكم عملية لإدارة المحتوى، والعملاء، والحجوزات، والمنتجات، والعمليات الداخلية.' },
+      { title: 'أنظمة الحجز والمواعيد', desc: 'أنظمة حجز إلكترونية بسيطة تقلل الرسائل اليدوية وتجعل تنظيم المواعيد أسهل للعملاء والموظفين.' },
+      { title: 'ربط واتساب', desc: 'ربط استفسارات الموقع، ونماذج التواصل، وإجراءات العملاء مباشرة بواتساب لتسريع التواصل.' },
+      { title: 'صيانة وتحسين المواقع', desc: 'إصلاح الأخطاء، وتحسين عرض الهاتف، ودعم النشر والاستضافة، وإضافة الميزات، والصيانة المستمرة للمواقع الحالية.' },
     ],
     projectsLabel: 'مشاريع مميزة', projectsTitle: 'أعمال حديثة',
     projectsDesc: 'ملاحظات مختصرة عن مشاريع حقيقية وأعمال بورتفوليو، مع الهدف، دوري، الحالة، والروابط المتاحة.',
@@ -86,15 +86,15 @@ const T = {
     aboutLabel: 'HAKKIMDA', aboutTitle: 'Gerçek iş ihtiyaçları için pratik çözümler',
     aboutP1: "Ben Fares Awarik, Türkiye'de yaşayan bir Laravel geliştiricisiyim. Küçük ve büyüyen işletmeler için kurumsal web siteleri, yönetim panelleri, rezervasyon sistemleri ve özel web uygulamaları geliştiriyorum.",
     aboutP2: 'Eğitim, ilaç, hukuk, e-ticaret ve hizmet sektörlerine yönelik projeler üzerinde çalıştım. Net yapı, pratik iş akışları ve müşterilerin gerçekten kullanıp yönetebileceği çözümler geliştirmeye odaklanıyorum.',
-    servicesLabel: 'Ne Geliştiriyorum', servicesTitle: 'Hizmetler',
-    servicesDesc: 'İlk günden işletmeniz için çalışmak üzere tasarlanmış Laravel odaklı web çözümleri.',
+    servicesLabel: 'NELER GELİŞTİRİYORUM', servicesTitle: 'Gerçek iş ihtiyaçlarına göre geliştirilen hizmetler',
+    servicesDesc: 'Dijital görünürlüğünüzü güçlendiren, günlük operasyonları kolaylaştıran ve işletmenizin büyümesini destekleyen pratik web çözümleri.',
     serviceCards: [
-      { title: 'İş Web Siteleri', desc: 'İşletmenizi net bir şekilde sunan ve potansiyel müşterilerle güven inşa eden profesyonel web siteleri.' },
-      { title: 'Web Uygulamaları', desc: 'İş akışınıza özel web uygulamaları — dahili araçlardan müşteri odaklı platformlara.' },
-      { title: 'Yönetim Panelleri', desc: 'İçerik, kullanıcı ve iş operasyonlarını yönetmek için temiz, sezgisel paneller.' },
-      { title: 'Randevu ve Klinik Sistemleri', desc: 'Günlük iş akışı için tasarlanmış randevu planlama ve hasta yönetim sistemleri.' },
-      { title: 'WhatsApp Tabanlı Çözümler', desc: "Web sitenizi doğrudan müşteri iletişimi için WhatsApp'a bağlayan entegrasyonlar." },
-      { title: 'Özel İş Sistemleri', desc: 'Belirli iş mantığınız ve süreçlerinize göre tasarlanmış özel sistemler.' },
+      { title: 'Kurumsal Web Siteleri', desc: 'Güven oluşturan, hizmetlerinizi açık şekilde anlatan ve ziyaretçileri potansiyel müşterilere dönüştüren mobil uyumlu web siteleri.' },
+      { title: 'Özel Laravel Sistemleri', desc: 'İşletmenizin çalışma şekline göre süreçleri, verileri, kullanıcıları ve günlük operasyonları düzenleyen özel web sistemleri.' },
+      { title: 'Yönetim Panelleri', desc: 'İçerikleri, müşterileri, rezervasyonları, ürünleri ve şirket içi işlemleri yönetmek için pratik kontrol panelleri.' },
+      { title: 'Rezervasyon ve Randevu Sistemleri', desc: 'Manuel mesajlaşmayı azaltan, müşteriler ve çalışanlar için randevu planlamayı kolaylaştıran çevrim içi sistemler.' },
+      { title: 'WhatsApp Entegrasyonları', desc: "Web sitesi taleplerini, iletişim formlarını ve müşteri işlemlerini daha hızlı iletişim için doğrudan WhatsApp'a bağlayan çözümler." },
+      { title: 'Web Sitesi Bakım ve Geliştirme', desc: 'Hata düzeltmeleri, mobil uyumluluk iyileştirmeleri, yayınlama desteği, yeni özellikler ve mevcut siteler için sürekli bakım.' },
     ],
     projectsLabel: 'Öne Çıkan Projeler', projectsTitle: 'Son Çalışmalar',
     projectsDesc: 'Gerçek projeler ve portfolyo işleri için hedef, rolüm, durum ve mevcut bağlantıları gösteren kısa case-study notları.',
@@ -366,7 +366,7 @@ function ServiceCard({ title, desc, index }) {
           {String(index+1).padStart(2,'0')}
         </div>
         <h3 style={{ fontFamily:'var(--heading)',fontWeight:600,fontSize:18,marginBottom:10 }}>{title}</h3>
-        <p style={{ color:'var(--text-secondary)',fontSize:14,fontWeight:300,lineHeight:1.7 }}>{desc}</p>
+        <p style={{ color:'#aaa79d',fontSize:14,fontWeight:300,lineHeight:1.7 }}>{desc}</p>
       </TiltCard>
     </Reveal>
   );
@@ -379,7 +379,7 @@ function Services() {
       <div className="container">
         <Reveal><p className="section-label">{t.servicesLabel}</p></Reveal>
         <Reveal delay={80}><h2 className="section-title">{t.servicesTitle}</h2></Reveal>
-        <Reveal delay={120}><p style={{ color:'var(--text-secondary)',maxWidth:560,fontSize:15,fontWeight:300,lineHeight:1.7,marginBottom:48 }}>{t.servicesDesc}</p></Reveal>
+        <Reveal delay={120}><p style={{ color:'#aaa79d',maxWidth:560,fontSize:15,fontWeight:300,lineHeight:1.7,marginBottom:48 }}>{t.servicesDesc}</p></Reveal>
         <div style={{ display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr))',gap:20 }}>
           {t.serviceCards.map((s,i) => <ServiceCard key={i} {...s} index={i} />)}
         </div>
