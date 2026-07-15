@@ -22,14 +22,14 @@ const T = {
       { title: 'WhatsApp Integrations', desc: 'Connect website inquiries, contact forms, and customer actions directly to WhatsApp for faster communication.' },
       { title: 'Website Maintenance & Improvements', desc: 'Bug fixes, responsive improvements, deployment support, feature additions, and ongoing maintenance for existing websites.' },
     ],
-    projectsLabel: 'Featured Projects', projectsTitle: 'Recent Work',
-    projectsDesc: 'Case-study notes for selected real projects and portfolio work, focused on the goal, my role, status, and available links.',
+    projectsLabel: 'SELECTED PROJECTS', projectsTitle: 'Projects built around real business problems',
+    projectsDesc: 'A selection of client projects and portfolio concepts across education, pharmaceuticals, legal services, and local businesses.',
     projects: [
-      { title: 'PREGO Education', subtitle: 'Laravel platform / admin panel for education services', problem: 'Education services needed a clear public website and an admin-friendly way to manage service, university, and student journey content.', built: 'Laravel website/platform with structured public pages, database-backed content, and an admin panel for managing education service information.', role: 'Laravel development, Blade UI, MySQL structure, admin panel work, and responsive frontend implementation.', result: 'Live website. Source code remains private as a client project.', tags: ['Laravel','PHP','Blade','MySQL','Bootstrap'], status: 'Live', liveUrl: 'https://eduprego.com/', sourceLabel: 'Private client project' },
-      { title: 'Efektpharma App', subtitle: 'Flutter offline product gallery app for pharma reps', problem: 'Pharma representatives needed a product gallery they could use during visits, including situations without a stable internet connection.', built: 'Offline-first Flutter app for browsing product information and visuals from local app data/assets.', role: 'Flutter app development, offline product browsing flow, and presentation-friendly mobile UI.', result: 'Built as an offline mobile app. No public live link is available.', tags: ['Flutter','Dart','Offline App','Mobile UI'], status: 'Built', sourceLabel: 'Private project' },
-      { title: 'Al-Mustafa Law', subtitle: 'Business/legal consultancy website', problem: 'The business needed a simple website that explains services clearly and builds trust before a visitor makes contact.', built: 'Structured service website with professional content sections, responsive pages, and clear contact paths.', role: 'Website implementation, service-page structure, responsive UI, and deployment support.', result: 'Live website. Source code remains private as client/business work.', tags: ['Laravel','PHP','Blade','Bootstrap'], status: 'Live', liveUrl: 'https://almostafa.company/', sourceLabel: 'Private client project' },
-      { title: 'OliveCap Studio', subtitle: 'Team / brand website', problem: 'A small team/brand website needed a clear structure for identity, services, work, and contact information.', built: 'Brand website structure with sections that can support services, team details, work samples, and future screenshots/assets.', role: 'Frontend structure, content layout, responsive implementation, and project presentation.', result: 'In progress. Final live link and brand assets still need to be added.', tags: ['JavaScript','React basics','Responsive UI','Brand Website'], status: 'In Progress' },
-      { title: 'Teknobox', subtitle: 'Shopify portfolio / ecommerce project', problem: 'A portfolio ecommerce project was needed to show Shopify-style product presentation without presenting it as a client result.', built: 'Ecommerce storefront concept with product/category presentation and commerce-style page structure.', role: 'Portfolio project setup, storefront structure, product presentation, and theme/customization practice.', result: 'Portfolio project. Live or GitHub link can be added when ready.', tags: ['Shopify','Ecommerce','Theme Customization','Portfolio Project'], status: 'Portfolio Project', sourceLabel: 'Portfolio project' },
+      { title: 'Prego Education', subtitle: 'Client Project · Laravel Platform', description: 'A multilingual education platform helping students explore universities and study opportunities in Italy, with an admin panel for managing universities, articles, and website content.', tags: ['Laravel','PHP','Blade','MySQL','Bootstrap'], status: 'Live Project', liveUrl: 'https://eduprego.com/' },
+      { title: 'Efektpharma App', subtitle: 'Client Project · Flutter Application', description: 'An offline-first mobile product catalog built for pharmaceutical sales representatives, providing fast access to structured product information without requiring an internet connection.', tags: ['Flutter','Dart','Offline App','Mobile UI'], status: 'In Use Privately' },
+      { title: 'Al-Mustafa Legal Consultancy', subtitle: 'Client Project · Business Website', description: 'A professional legal consultancy website designed to present services clearly, build trust, and make it easy for potential clients to contact the business.', tags: ['Laravel','PHP','Blade','Bootstrap'], status: 'Live Project', liveUrl: 'https://almostafa.company/' },
+      { title: 'Gümüşhane Yayla Bal', subtitle: 'Client Project · Product Website', description: 'A responsive product-focused website built to present a local honey brand professionally and guide customers toward direct contact and purchase inquiries.', tags: ['Responsive UI','Product Website','Local Business'], status: 'Client Project' },
+      { title: 'Furniture Mora', subtitle: 'Portfolio Concept · Furniture Website', description: 'A premium Arabic furniture website concept designed for hotels, restaurants, homes, and commercial spaces, with product-focused sections and direct customer inquiry flows.', tags: ['Arabic UI','Product Website','Responsive UI'], status: 'Live Concept', liveUrl: 'https://fares-awarik.github.io/furniture-mora/' },
     ],
     projectLabels: { problem: 'Problem / goal', built: 'What I built', role: 'My role', result: 'Result / status', stack: 'Tech stack' },
     projectLiveLabel: 'Live Site', projectGithubLabel: 'GitHub',
@@ -59,14 +59,14 @@ const T = {
       { title: 'ربط واتساب', desc: 'ربط استفسارات الموقع، ونماذج التواصل، وإجراءات العملاء مباشرة بواتساب لتسريع التواصل.' },
       { title: 'صيانة وتحسين المواقع', desc: 'إصلاح الأخطاء، وتحسين عرض الهاتف، ودعم النشر والاستضافة، وإضافة الميزات، والصيانة المستمرة للمواقع الحالية.' },
     ],
-    projectsLabel: 'مشاريع مميزة', projectsTitle: 'أعمال حديثة',
-    projectsDesc: 'ملاحظات مختصرة عن مشاريع حقيقية وأعمال بورتفوليو، مع الهدف، دوري، الحالة، والروابط المتاحة.',
+    projectsLabel: 'مشاريع مختارة', projectsTitle: 'مشاريع مبنية على مشاكل واحتياجات حقيقية',
+    projectsDesc: 'مجموعة من مشاريع العملاء ومفاهيم البورتفوليو في مجالات التعليم، والأدوية، والخدمات القانونية، والمشاريع المحلية.',
     projects: [
-      { title: 'PREGO Education', subtitle: 'منصة Laravel ولوحة تحكم لخدمات التعليم', problem: 'كانت خدمات التعليم تحتاج موقعاً واضحاً وطريقة سهلة لإدارة محتوى الخدمات والجامعات ورحلة الطالب من لوحة تحكم.', built: 'موقع/منصة Laravel بصفحات منظمة، محتوى مرتبط بقاعدة البيانات، ولوحة تحكم لإدارة معلومات خدمات التعليم.', role: 'تطوير Laravel، واجهات Blade، هيكلة MySQL، العمل على لوحة التحكم، وتنفيذ واجهة متجاوبة.', result: 'الموقع منشور. الكود خاص لأنه مشروع عميل.', tags: ['Laravel','PHP','Blade','MySQL','Bootstrap'], status: 'منشور', liveUrl: 'https://eduprego.com/', sourceLabel: 'مشروع عميل خاص' },
-      { title: 'Efektpharma App', subtitle: 'تطبيق Flutter كمعرض منتجات يعمل دون إنترنت لمندوبي الأدوية', problem: 'كان مندوبو الأدوية بحاجة إلى معرض منتجات يمكن استخدامه أثناء الزيارات، حتى عند عدم توفر اتصال إنترنت مستقر.', built: 'تطبيق Flutter يعمل دون إنترنت لتصفح معلومات وصور المنتجات من بيانات وملفات محلية داخل التطبيق.', role: 'تطوير تطبيق Flutter، بناء تجربة تصفح دون إنترنت، وتصميم واجهة مناسبة للعرض أثناء الزيارات.', result: 'تطبيق موبايل يعمل دون إنترنت. لا يوجد رابط عام متاح حالياً.', tags: ['Flutter','Dart','Offline App','Mobile UI'], status: 'منجز', sourceLabel: 'مشروع خاص' },
-      { title: 'Al-Mustafa Law', subtitle: 'موقع أعمال / استشارات قانونية', problem: 'كان العمل يحتاج موقعاً بسيطاً يشرح الخدمات بوضوح ويبني الثقة قبل أن يتواصل الزائر.', built: 'موقع خدمات منظم بأقسام محتوى احترافية وصفحات متجاوبة ومسارات تواصل واضحة.', role: 'تنفيذ الموقع، تنظيم صفحات الخدمات، الواجهة المتجاوبة، ودعم النشر.', result: 'الموقع منشور. الكود خاص لأنه مشروع عميل/عمل.', tags: ['Laravel','PHP','Blade','Bootstrap'], status: 'منشور', liveUrl: 'https://almostafa.company/', sourceLabel: 'مشروع عميل خاص' },
-      { title: 'OliveCap Studio', subtitle: 'موقع فريق / علامة تجارية', problem: 'كان موقع الفريق/العلامة يحتاج هيكلة واضحة للهوية والخدمات والأعمال وبيانات التواصل.', built: 'هيكل موقع علامة تجارية بأقسام يمكن أن تدعم الخدمات، تفاصيل الفريق، نماذج الأعمال، والصور مستقبلاً.', role: 'هيكلة الواجهة، ترتيب المحتوى، التنفيذ المتجاوب، وطريقة عرض المشروع.', result: 'قيد التطوير. ما زال يحتاج رابطاً نهائياً ومواد العلامة.', tags: ['JavaScript','React basics','Responsive UI','Brand Website'], status: 'قيد التطوير' },
-      { title: 'Teknobox', subtitle: 'مشروع بورتفوليو Shopify / تجارة إلكترونية', problem: 'كان الهدف إنشاء مشروع بورتفوليو يعرض أسلوب صفحات Shopify والمنتجات بدون تقديمه كنتيجة لعميل حقيقي.', built: 'تصور متجر إلكتروني مع عرض للمنتجات والتصنيفات وهيكلة صفحات بأسلوب التجارة الإلكترونية.', role: 'إعداد مشروع بورتفوليو، هيكلة المتجر، عرض المنتجات، والتدرب على التخصيص.', result: 'مشروع بورتفوليو. يمكن إضافة رابط مباشر أو GitHub عند الجاهزية.', tags: ['Shopify','Ecommerce','Theme Customization','Portfolio Project'], status: 'مشروع بورتفوليو', sourceLabel: 'مشروع بورتفوليو' },
+      { title: 'Prego Education', subtitle: 'مشروع عميل · منصة Laravel', description: 'منصة تعليمية متعددة اللغات تساعد الطلاب على استكشاف الجامعات وفرص الدراسة في إيطاليا، مع لوحة إدارة للجامعات والمقالات ومحتوى الموقع.', tags: ['Laravel','PHP','Blade','MySQL','Bootstrap'], status: 'مشروع منشور', liveUrl: 'https://eduprego.com/' },
+      { title: 'Efektpharma App', subtitle: 'مشروع عميل · تطبيق Flutter', description: 'تطبيق كتالوج منتجات يعمل دون اتصال بالإنترنت، تم تطويره لمندوبي شركة أدوية للوصول السريع إلى معلومات المنتجات المنظمة حتى عند عدم توفر الإنترنت.', tags: ['Flutter','Dart','Offline App','Mobile UI'], status: 'قيد الاستخدام بشكل خاص' },
+      { title: 'Al-Mustafa Legal Consultancy', subtitle: 'مشروع عميل · موقع أعمال', description: 'موقع احترافي للاستشارات القانونية، صُمم لعرض الخدمات بوضوح، وبناء الثقة، وتسهيل تواصل العملاء المحتملين مع الشركة.', tags: ['Laravel','PHP','Blade','Bootstrap'], status: 'مشروع منشور', liveUrl: 'https://almostafa.company/' },
+      { title: 'Gümüşhane Yayla Bal', subtitle: 'مشروع عميل · موقع منتجات', description: 'موقع متجاوب يعرض علامة عسل محلية بصورة احترافية، ويوجه الزوار نحو التواصل المباشر والاستفسار عن المنتجات والشراء.', tags: ['Responsive UI','Product Website','Local Business'], status: 'مشروع عميل' },
+      { title: 'Furniture Mora', subtitle: 'مشروع استعراضي · موقع أثاث', description: 'تصور لموقع أثاث عربي فاخر موجه للفنادق، والمطاعم، والمنازل، والمساحات التجارية، مع أقسام لعرض المنتجات ومسارات واضحة لتواصل العملاء.', tags: ['Arabic UI','Product Website','Responsive UI'], status: 'مفهوم منشور', liveUrl: 'https://fares-awarik.github.io/furniture-mora/' },
     ],
     projectLabels: { problem: 'المشكلة / الهدف', built: 'ما بنيته', role: 'دوري', result: 'النتيجة / الحالة', stack: 'التقنيات' },
     projectLiveLabel: 'زيارة الموقع', projectGithubLabel: 'GitHub',
@@ -96,14 +96,14 @@ const T = {
       { title: 'WhatsApp Entegrasyonları', desc: "Web sitesi taleplerini, iletişim formlarını ve müşteri işlemlerini daha hızlı iletişim için doğrudan WhatsApp'a bağlayan çözümler." },
       { title: 'Web Sitesi Bakım ve Geliştirme', desc: 'Hata düzeltmeleri, mobil uyumluluk iyileştirmeleri, yayınlama desteği, yeni özellikler ve mevcut siteler için sürekli bakım.' },
     ],
-    projectsLabel: 'Öne Çıkan Projeler', projectsTitle: 'Son Çalışmalar',
-    projectsDesc: 'Gerçek projeler ve portfolyo işleri için hedef, rolüm, durum ve mevcut bağlantıları gösteren kısa case-study notları.',
+    projectsLabel: 'SEÇİLMİŞ PROJELER', projectsTitle: 'Gerçek iş problemlerine göre geliştirilen projeler',
+    projectsDesc: 'Eğitim, ilaç, hukuk ve yerel işletmeler için geliştirilen müşteri projeleri ve portföy konseptlerinden seçilmiş çalışmalar.',
     projects: [
-      { title: 'PREGO Education', subtitle: 'Eğitim hizmetleri için Laravel platform / yönetim paneli', problem: 'Eğitim hizmetlerinin net bir web sitesine ve hizmet, üniversite, öğrenci süreci içeriklerini yönetebilecek pratik bir panele ihtiyacı vardı.', built: 'Yapılandırılmış sayfalar, veritabanı destekli içerik ve eğitim hizmeti bilgilerini yönetmek için admin paneli olan Laravel platformu.', role: 'Laravel geliştirme, Blade arayüz, MySQL yapılandırması, admin panel çalışması ve responsive frontend uygulaması.', result: 'Web sitesi yayında. Kod müşteri projesi olduğu için özel kalıyor.', tags: ['Laravel','PHP','Blade','MySQL','Bootstrap'], status: 'Yayında', liveUrl: 'https://eduprego.com/', sourceLabel: 'Özel müşteri projesi' },
-      { title: 'Efektpharma App', subtitle: 'İlaç temsilcileri için offline Flutter ürün galerisi', problem: 'İlaç temsilcilerinin ziyaretlerde, internet bağlantısı zayıf olduğunda bile kullanabileceği bir ürün galerisine ihtiyacı vardı.', built: 'Ürün bilgilerini ve görsellerini yerel uygulama verilerinden gösteren offline-first Flutter uygulaması.', role: 'Flutter uygulama geliştirme, offline ürün gezinme akışı ve sunuma uygun mobil arayüz.', result: 'Offline mobil uygulama olarak geliştirildi. Herkese açık canlı link yok.', tags: ['Flutter','Dart','Offline App','Mobile UI'], status: 'Geliştirildi', sourceLabel: 'Özel proje' },
-      { title: 'Al-Mustafa Law', subtitle: 'İş / hukuk danışmanlığı web sitesi', problem: 'İşletmenin hizmetleri net anlatan ve ziyaretçi iletişime geçmeden önce güven oluşturan sade bir web sitesine ihtiyacı vardı.', built: 'Profesyonel içerik bölümleri, responsive sayfalar ve net iletişim yolları olan yapılandırılmış hizmet sitesi.', role: 'Web sitesi uygulaması, hizmet sayfası yapısı, responsive UI ve yayınlama desteği.', result: 'Web sitesi yayında. Kod müşteri/iş projesi olduğu için özel kalıyor.', tags: ['Laravel','PHP','Blade','Bootstrap'], status: 'Yayında', liveUrl: 'https://almostafa.company/', sourceLabel: 'Özel müşteri projesi' },
-      { title: 'OliveCap Studio', subtitle: 'Takım / marka web sitesi', problem: 'Takım/marka sitesinin kimlik, hizmetler, işler ve iletişim bilgileri için net bir yapıya ihtiyacı vardı.', built: 'Hizmetleri, ekip detaylarını, iş örneklerini ve ileride eklenecek görselleri destekleyebilecek marka sitesi yapısı.', role: 'Frontend yapısı, içerik yerleşimi, responsive uygulama ve proje sunumu.', result: 'Devam ediyor. Final canlı link ve marka görselleri eklenmeli.', tags: ['JavaScript','React basics','Responsive UI','Brand Website'], status: 'Devam Ediyor' },
-      { title: 'Teknobox', subtitle: 'Shopify portfolyo / ecommerce projesi', problem: 'Müşteri sonucu gibi göstermeden Shopify tarzı ürün sunumu gösterecek dürüst bir portfolyo ecommerce projesi gerekiyordu.', built: 'Ürün/kategori sunumu ve ecommerce sayfa yapısı olan mağaza konsepti.', role: 'Portfolyo projesi kurulumu, mağaza yapısı, ürün sunumu ve tema/özelleştirme pratiği.', result: 'Portfolyo projesi. Hazır olduğunda canlı veya GitHub linki eklenebilir.', tags: ['Shopify','Ecommerce','Theme Customization','Portfolio Project'], status: 'Portfolyo Projesi', sourceLabel: 'Portfolyo projesi' },
+      { title: 'Prego Education', subtitle: 'Müşteri Projesi · Laravel Platformu', description: 'Öğrencilerin İtalya’daki üniversiteleri ve eğitim fırsatlarını keşfetmesine yardımcı olan çok dilli bir eğitim platformu. Üniversiteleri, makaleleri ve site içeriğini yönetmek için bir yönetim paneli içerir.', tags: ['Laravel','PHP','Blade','MySQL','Bootstrap'], status: 'Yayında', liveUrl: 'https://eduprego.com/' },
+      { title: 'Efektpharma App', subtitle: 'Müşteri Projesi · Flutter Uygulaması', description: 'İlaç firması satış temsilcilerinin internet bağlantısı olmadan düzenli ürün bilgilerine hızlı şekilde ulaşabilmesi için geliştirilen çevrim dışı mobil ürün kataloğu.', tags: ['Flutter','Dart','Offline App','Mobile UI'], status: 'Özel Kullanımda' },
+      { title: 'Al-Mustafa Legal Consultancy', subtitle: 'Müşteri Projesi · Kurumsal Web Sitesi', description: 'Hizmetleri açık şekilde sunmak, güven oluşturmak ve potansiyel müşterilerin firmayla kolayca iletişim kurmasını sağlamak için tasarlanan profesyonel hukuk danışmanlığı sitesi.', tags: ['Laravel','PHP','Blade','Bootstrap'], status: 'Yayında', liveUrl: 'https://almostafa.company/' },
+      { title: 'Gümüşhane Yayla Bal', subtitle: 'Müşteri Projesi · Ürün Web Sitesi', description: 'Yerel bir bal markasını profesyonel şekilde tanıtmak ve ziyaretçileri doğrudan iletişim ile satın alma taleplerine yönlendirmek için geliştirilen mobil uyumlu ürün sitesi.', tags: ['Responsive UI','Product Website','Local Business'], status: 'Müşteri Projesi' },
+      { title: 'Furniture Mora', subtitle: 'Portföy Konsepti · Mobilya Web Sitesi', description: 'Oteller, restoranlar, evler ve ticari alanlar için tasarlanan; ürün odaklı bölümler ve doğrudan müşteri iletişim akışları içeren premium Arapça mobilya sitesi konsepti.', tags: ['Arabic UI','Product Website','Responsive UI'], status: 'Canlı Konsept', liveUrl: 'https://fares-awarik.github.io/furniture-mora/' },
     ],
     projectLabels: { problem: 'Problem / hedef', built: 'Ne geliştirdim', role: 'Rolüm', result: 'Sonuç / durum', stack: 'Teknoloji' },
     projectLiveLabel: 'Canlı Site', projectGithubLabel: 'GitHub',
@@ -389,15 +389,9 @@ function Services() {
 }
 
 /* ─── PROJECTS ─── */
-function ProjectCard({ title, subtitle, problem, built, role, result, tags, status, liveUrl, githubUrl, sourceLabel, index }) {
+function ProjectCard({ title, subtitle, description, tags, status, liveUrl, githubUrl, index }) {
   const t = useT();
   const labels = t.projectLabels || {};
-  const details = [
-    [labels.problem || 'Problem / goal', problem],
-    [labels.built || 'What I built', built],
-    [labels.role || 'My role', role],
-    [labels.result || 'Result / status', result],
-  ].filter(([, value]) => value);
   return (
     <Reveal delay={index*100} style={{ height:'100%' }} className="reveal-wrap">
       <TiltCard style={{ height:'100%',background:'var(--bg-card)',border:'1px solid var(--border)',borderRadius:16,overflow:'hidden' }}>
@@ -406,14 +400,7 @@ function ProjectCard({ title, subtitle, problem, built, role, result, tags, stat
           <span style={{ fontFamily:'var(--mono)',fontSize:11,color:'var(--accent)',opacity:0.6,letterSpacing:'0.1em' }}>// {String(index+1).padStart(2,'0')}</span>
           <h3 style={{ fontFamily:'var(--heading)',fontWeight:600,fontSize:18,lineHeight:1.3 }}>{title}</h3>
           {subtitle && <p style={{ color:'var(--accent)',fontFamily:'var(--mono)',fontSize:11,lineHeight:1.5 }}>{subtitle}</p>}
-          <div style={{ display:'grid',gap:10,flex:1 }}>
-            {details.map(([label, value]) => (
-              <div key={label} style={{ display:'grid',gap:4 }}>
-                <span style={{ fontFamily:'var(--mono)',fontSize:10,color:'var(--text-secondary)',textTransform:'uppercase',letterSpacing:'0.08em' }}>{label}</span>
-                <p style={{ color:'var(--text-secondary)',fontSize:13,fontWeight:300,lineHeight:1.65 }}>{value}</p>
-              </div>
-            ))}
-          </div>
+          <p style={{ color:'#aaa79d',fontSize:13,fontWeight:300,lineHeight:1.65,flex:1 }}>{description}</p>
           <div style={{ display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:8 }}>
             <span style={{ fontFamily:'var(--mono)',fontSize:10,color:'var(--text-secondary)',textTransform:'uppercase',letterSpacing:'0.08em' }}>{labels.stack || 'Tech stack'}</span>
             <div style={{ display:'flex',flexWrap:'wrap',gap:8 }}>
@@ -422,16 +409,14 @@ function ProjectCard({ title, subtitle, problem, built, role, result, tags, stat
                   padding:'5px 12px',borderRadius:6,border:'1px solid oklch(0.75 0.15 70 / 0.1)',letterSpacing:'0.02em' }}>{tag}</span>
               ))}
             </div>
-            {status && <span style={{ background:'var(--accent)',color:'#08080a',fontFamily:'var(--mono)',fontSize:10,fontWeight:600,
-              padding:'4px 10px',borderRadius:6,whiteSpace:'nowrap' }}>{status}</span>}
+            {status && <span style={{ display:'inline-flex',flex:'0 1 auto',alignItems:'center',maxWidth:'100%',background:'var(--accent)',color:'#08080a',fontFamily:'var(--mono)',fontSize:10,fontWeight:600,
+              padding:'4px 10px',borderRadius:6,whiteSpace:'normal',overflowWrap:'anywhere' }}>{status}</span>}
           </div>
           <div style={{ display:'flex',alignItems:'center',gap:8,flexWrap:'wrap' }}>
             {liveUrl && <a href={liveUrl} target="_blank" rel="noopener noreferrer" style={{ fontFamily:'var(--mono)',fontSize:11,fontWeight:500,color:'var(--accent)',
               border:'1px solid oklch(0.75 0.15 70 / 0.25)',padding:'5px 12px',borderRadius:6 }}>{t.projectLiveLabel}</a>}
             {githubUrl && <a href={githubUrl} target="_blank" rel="noopener noreferrer" style={{ fontFamily:'var(--mono)',fontSize:11,fontWeight:500,color:'var(--accent)',
               border:'1px solid oklch(0.75 0.15 70 / 0.25)',padding:'5px 12px',borderRadius:6 }}>{t.projectGithubLabel}</a>}
-            {sourceLabel && <span style={{ fontFamily:'var(--mono)',fontSize:10,color:'var(--text-secondary)',border:'1px dashed var(--border)',
-              padding:'5px 10px',borderRadius:6 }}>{sourceLabel}</span>}
           </div>
         </div>
       </TiltCard>
