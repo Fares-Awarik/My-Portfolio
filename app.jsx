@@ -41,9 +41,12 @@ const T = {
       { quote: 'I was very satisfied with the work, and the website turned out comprehensive and well designed. Our continuous communication throughout the process allowed us to review and refine the necessary sections together.', name: 'Prego Education', role: '' },
     ],
     trustPoints: ['Real Client Projects','Used in Daily Business Operations','Arabic, English & Turkish','Support After Delivery'],
-    contactLabel: 'Get in Touch', contactTitle: "Let's Work Together",
-    contactDesc: 'If you need a business website, admin panel, booking system, or a practical web solution, feel free to get in touch.',
-    contactLinkLabels: ['WhatsApp','Email','LinkedIn','GitHub','Instagram'],
+    contactLabel: 'GET IN TOUCH', contactTitle: 'Let’s turn your business need into a practical solution',
+    contactDesc: 'Have a website, system, or workflow that needs to be built or improved? Send me a short message explaining what you need, what is currently not working, and your preferred timeline.',
+    contactPrimary: 'Discuss Your Project', contactSecondary: 'Send an Email',
+    contactMicrocopy: 'No detailed brief is required — a short message is enough to get started.',
+    contactTrustLine: 'Available for client projects in Arabic, English, and Turkish.',
+    contactSocialLabels: ['LinkedIn','GitHub','Instagram'],
     footer: '© 2026 Fares Awarik — Built with React · Deployed on GitHub Pages.',
     navItems: ['About','Services','Projects','Contact'],
   },
@@ -85,9 +88,12 @@ const T = {
       { quote: 'كنت راضيًا جدًا عن العمل، وخرج الموقع بصورة شاملة وجميلة. وبفضل التواصل المستمر طوال فترة التنفيذ، استطعنا مراجعة وتعديل الأجزاء المطلوبة معًا.', name: 'Prego Education', role: '' },
     ],
     trustPoints: ['مشاريع عملاء حقيقية','مستخدمة في عمليات العمل اليومية','العربية والتركية والإنجليزية','دعم بعد التسليم'],
-    contactLabel: 'تواصل', contactTitle: 'لنعمل معاً',
-    contactDesc: 'إذا كنت تحتاج موقع أعمال، لوحة تحكم، نظام حجز، أو حل ويب عملي، لا تتردد في التواصل.',
-    contactLinkLabels: ['واتساب','البريد الإلكتروني','LinkedIn','GitHub','Instagram'],
+    contactLabel: 'تواصل معي', contactTitle: 'لنحوّل احتياج مشروعك إلى حل عملي',
+    contactDesc: 'هل لديك موقع أو نظام أو سير عمل يحتاج إلى البناء أو التحسين؟ أرسل لي رسالة قصيرة توضّح ما تحتاجه، والمشكلة الحالية، والمدة التي تفضلها لتنفيذ المشروع.',
+    contactPrimary: 'ناقش مشروعك معي', contactSecondary: 'أرسل بريدًا إلكترونيًا',
+    contactMicrocopy: 'لا تحتاج إلى تجهيز تفاصيل كاملة — رسالة قصيرة تكفي لنبدأ.',
+    contactTrustLine: 'متاح لمشاريع العملاء بالعربية والتركية والإنجليزية.',
+    contactSocialLabels: ['LinkedIn','GitHub','Instagram'],
     footer: '© 2026 فارس عواريك — مبني بـ React · منشور على GitHub Pages.',
     navItems: ['عنّي','الخدمات','المشاريع','تواصل'],
   },
@@ -129,9 +135,12 @@ const T = {
       { quote: 'Çalışmadan çok memnun kaldım. Site kapsamlı ve güzel oldu. Süreç boyunca sürekli iletişimde kaldığımız için gerekli bölümleri birlikte revize etme fırsatımız da oldu.', name: 'Prego Education', role: '' },
     ],
     trustPoints: ['Gerçek Müşteri Projeleri','Günlük İş Süreçlerinde Kullanım','Arapça, İngilizce ve Türkçe','Teslimat Sonrası Destek'],
-    contactLabel: 'İletişim', contactTitle: 'Birlikte Çalışalım',
-    contactDesc: 'Bir iş web sitesi, yönetim paneli, randevu sistemi veya pratik bir web çözümüne ihtiyacınız varsa, iletişime geçmekten çekinmeyin.',
-    contactLinkLabels: ['WhatsApp','Email','LinkedIn','GitHub','Instagram'],
+    contactLabel: 'İLETİŞİME GEÇİN', contactTitle: 'İş ihtiyacınızı pratik bir çözüme dönüştürelim',
+    contactDesc: 'Geliştirilmesi veya iyileştirilmesi gereken bir web siteniz, sisteminiz ya da iş akışınız mı var? İhtiyacınızı, mevcut sorunu ve tercih ettiğiniz zaman planını kısaca anlatan bir mesaj gönderin.',
+    contactPrimary: 'Projenizi Konuşalım', contactSecondary: 'E-posta Gönder',
+    contactMicrocopy: 'Detaylı bir proje dosyası hazırlamanız gerekmez — başlamak için kısa bir mesaj yeterlidir.',
+    contactTrustLine: 'Arapça, İngilizce ve Türkçe müşteri projelerine açığım.',
+    contactSocialLabels: ['LinkedIn','GitHub','Instagram'],
     footer: '© 2026 Fares Awarik — React ile geliştirildi · GitHub Pages üzerinde yayında.',
     navItems: ['Hakkımda','Hizmetler','Projeler','İletişim'],
   }
@@ -497,31 +506,52 @@ function TrustTestimonials() {
 
 /* ─── CONTACT ─── */
 const contactLinks = [
-  { label:'WhatsApp', href:'https://wa.me/+905538604023', mono:'WA' },
-  { label:'Email', href:'mailto:fares119.fh@gmail.com', mono:'✉' },
-  { label:'LinkedIn', href:'https://www.linkedin.com/in/fares-awarik/?locale=en-US', mono:'in' },
-  { label:'GitHub', href:'https://github.com/Fares-Awarik', mono:'GH' },
-  { label:'Instagram', href:'https://www.instagram.com/fares.awarik/', mono:'IG' },
+  { label:'WhatsApp', href:'https://wa.me/+905538604023' },
+  { label:'Email', href:'mailto:fares119.fh@gmail.com' },
+  { label:'LinkedIn', href:'https://www.linkedin.com/in/fares-awarik/?locale=en-US' },
+  { label:'GitHub', href:'https://github.com/Fares-Awarik' },
+  { label:'Instagram', href:'https://www.instagram.com/fares.awarik/' },
 ];
 
 function Contact() {
   const t = useT();
+  const primaryLinks = contactLinks.slice(0,2);
+  const socialLinks = contactLinks.slice(2);
   return (
     <section id="contact" style={{ background:'linear-gradient(180deg, var(--bg-card) 0%, var(--bg) 100%)' }}>
       <div className="container" style={{ textAlign:'center',maxWidth:640 }}>
         <Reveal><p className="section-label" style={{ justifyContent:'center' }}>{t.contactLabel}</p></Reveal>
         <Reveal delay={80}><h2 className="section-title" style={{ textAlign:'center' }}>{t.contactTitle}</h2></Reveal>
-        <Reveal delay={160}><p style={{ color:'var(--text-secondary)',fontSize:15,fontWeight:300,lineHeight:1.8,marginBottom:44 }}>{t.contactDesc}</p></Reveal>
+        <Reveal delay={160}><p style={{ color:'#aaa79d',fontSize:15,fontWeight:300,lineHeight:1.8,marginBottom:22 }}>{t.contactDesc}</p></Reveal>
         <Reveal delay={240}>
-          <div style={{ display:'flex',justifyContent:'center',gap:14,flexWrap:'wrap' }}>
-            {contactLinks.map((l,i) => (
-              <TiltCard key={l.label} style={{ background:'var(--bg-elevated)',border:'1px solid var(--border)',borderRadius:12,overflow:'hidden' }}>
-                <a href={l.href} target="_blank" rel="noopener noreferrer" style={{ display:'flex',alignItems:'center',gap:10,padding:'14px 24px',fontFamily:'var(--heading)',fontSize:14,fontWeight:500 }}>
-                  <span style={{ fontFamily:'var(--mono)',fontSize:12,color:'var(--accent)',width:24,textAlign:'center' }}>{l.mono}</span>
-                  {t.contactLinkLabels?.[i] || l.label}
+          <div style={{ display:'flex',justifyContent:'center',gap:12,flexWrap:'wrap' }}>
+            {primaryLinks.map((l,i) => (
+              <TiltCard key={l.label} style={{ background:i===0?'var(--accent)':'var(--bg-elevated)',border:'1px solid '+(i===0?'var(--accent)':'var(--border)'),borderRadius:10,overflow:'hidden' }}>
+                <a href={l.href} target={i===0?'_blank':undefined} rel={i===0?'noopener noreferrer':undefined} aria-label={i===0?t.contactPrimary:t.contactSecondary} style={{ display:'flex',alignItems:'center',gap:10,padding:'13px 22px',fontFamily:'var(--heading)',fontSize:14,fontWeight:600,color:i===0?'#08080a':'var(--text)' }}>
+                  <span aria-hidden="true" style={{ display:'inline-flex',alignItems:'center',justifyContent:'center',width:24,color:i===0?'#08080a':'var(--accent)' }}>
+                    {l.label === 'WhatsApp' ? (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20.5 11.7a8.6 8.6 0 0 1-12.7 7.5L3.5 20.5l1.3-4.2A8.6 8.6 0 1 1 20.5 11.7Z" />
+                        <path d="M8.5 8.7c.2-.5.5-.5.8-.5h.7c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.5.6c-.2.2-.1.4 0 .6.5.9 1.2 1.5 2.1 2 .3.2.5.2.7-.1l.6-.7c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.6 0 .4-.2 1-.6 1.2-.4.3-1 .4-1.6.2-1.8-.5-3.2-1.4-4.4-2.6-1.2-1.2-2.1-2.6-2.6-4.2-.2-.6-.1-1.2.1-1.7Z" />
+                      </svg>
+                    ) : (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                        <path d="m4 7 8 6 8-6" />
+                      </svg>
+                    )}
+                  </span>
+                  {i===0?t.contactPrimary:t.contactSecondary}
                 </a>
               </TiltCard>
             ))}
+          </div>
+        </Reveal>
+        <Reveal delay={300}><p style={{ color:'#aaa79d',fontSize:12,fontWeight:300,lineHeight:1.6,marginTop:18 }}>{t.contactMicrocopy}</p></Reveal>
+        <Reveal delay={340}><p style={{ color:'#aaa79d',fontSize:12,fontWeight:300,lineHeight:1.6,marginTop:8 }}>{t.contactTrustLine}</p></Reveal>
+        <Reveal delay={400}>
+          <div style={{ display:'flex',justifyContent:'center',gap:16,flexWrap:'wrap',marginTop:20 }}>
+            {socialLinks.map((l,i) => <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" aria-label={t.contactSocialLabels[i]} style={{ color:'#aaa79d',fontFamily:'var(--mono)',fontSize:11 }}>{t.contactSocialLabels[i]}</a>)}
           </div>
         </Reveal>
       </div>
