@@ -33,7 +33,14 @@ const T = {
     ],
     projectLabels: { problem: 'Problem / goal', built: 'What I built', role: 'My role', result: 'Result / status', stack: 'Tech stack' },
     projectLiveLabel: 'Live Site', projectGithubLabel: 'GitHub',
-    stackLabel: 'Tech Stack', stackTitle: 'Tools I Work With',
+    trustLabel: 'CLIENT FEEDBACK', trustTitle: 'Trusted through real projects and practical results',
+    trustDesc: 'Feedback from clients who used the websites and applications I developed for their businesses.',
+    testimonials: [
+      { quote: 'The website contributed significantly to developing my work and increasing the number of clients. It strengthened my professional presence and clients’ trust in my services. Fares also provided exceptional responsiveness and support throughout the process.', name: 'Al-Mustafa Legal Consultancy', role: '' },
+      { quote: 'The application Fares developed significantly simplified the workflow for both me and my colleagues. It is easy to use, fast, and practical, and whenever an issue occurred, he provided quick support and solutions.', name: 'Mehmet Beşir Daye', role: 'Project Manager — Efektpharma' },
+      { quote: 'I was very satisfied with the work, and the website turned out comprehensive and well designed. Our continuous communication throughout the process allowed us to review and refine the necessary sections together.', name: 'Prego Education', role: '' },
+    ],
+    trustPoints: ['Real Client Projects','Used in Daily Business Operations','Arabic, English & Turkish','Support After Delivery'],
     contactLabel: 'Get in Touch', contactTitle: "Let's Work Together",
     contactDesc: 'If you need a business website, admin panel, booking system, or a practical web solution, feel free to get in touch.',
     contactLinkLabels: ['WhatsApp','Email','LinkedIn','GitHub','Instagram'],
@@ -70,7 +77,14 @@ const T = {
     ],
     projectLabels: { problem: 'المشكلة / الهدف', built: 'ما بنيته', role: 'دوري', result: 'النتيجة / الحالة', stack: 'التقنيات' },
     projectLiveLabel: 'زيارة الموقع', projectGithubLabel: 'GitHub',
-    stackLabel: 'الأدوات', stackTitle: 'الأدوات التي أستخدمها',
+    trustLabel: 'آراء العملاء', trustTitle: 'ثقة مبنية على مشاريع حقيقية ونتائج عملية',
+    trustDesc: 'آراء عملاء استخدموا المواقع والتطبيقات التي طورتها في أعمالهم ومشاريعهم.',
+    testimonials: [
+      { quote: 'ساهم الموقع بشكل كبير في تطوير عملي وزيادة عدد عملائي، وكان له أثر واضح في تعزيز حضوري المهني وثقة العملاء بخدماتي. كما كانت سرعة الاستجابة والدعم استثنائية طوال فترة العمل.', name: 'شركة المصطفى للاستشارات القانونية', role: '' },
+      { quote: 'ساهم التطبيق الذي طوّره فارس في تسهيل سير العمل لي ولزملائي بشكل ملحوظ. التطبيق سهل الاستخدام وسريع وعملي، وعند حدوث أي مشكلة كان يقدم الحل والدعم بسرعة.', name: 'محمد بشير ضايع', role: 'مدير المشاريع — Efektpharma' },
+      { quote: 'كنت راضيًا جدًا عن العمل، وخرج الموقع بصورة شاملة وجميلة. وبفضل التواصل المستمر طوال فترة التنفيذ، استطعنا مراجعة وتعديل الأجزاء المطلوبة معًا.', name: 'Prego Education', role: '' },
+    ],
+    trustPoints: ['مشاريع عملاء حقيقية','مستخدمة في عمليات العمل اليومية','العربية والتركية والإنجليزية','دعم بعد التسليم'],
     contactLabel: 'تواصل', contactTitle: 'لنعمل معاً',
     contactDesc: 'إذا كنت تحتاج موقع أعمال، لوحة تحكم، نظام حجز، أو حل ويب عملي، لا تتردد في التواصل.',
     contactLinkLabels: ['واتساب','البريد الإلكتروني','LinkedIn','GitHub','Instagram'],
@@ -107,7 +121,14 @@ const T = {
     ],
     projectLabels: { problem: 'Problem / hedef', built: 'Ne geliştirdim', role: 'Rolüm', result: 'Sonuç / durum', stack: 'Teknoloji' },
     projectLiveLabel: 'Canlı Site', projectGithubLabel: 'GitHub',
-    stackLabel: 'Teknoloji', stackTitle: 'Kullandığım Araçlar',
+    trustLabel: 'MÜŞTERİ YORUMLARI', trustTitle: 'Gerçek projeler ve pratik sonuçlarla oluşan güven',
+    trustDesc: 'Geliştirdiğim web sitelerini ve uygulamaları işletmelerinde kullanan müşterilerin yorumları.',
+    testimonials: [
+      { quote: 'Web sitesi işimin gelişmesine ve müşteri sayımın artmasına önemli ölçüde katkı sağladı. Profesyonel görünürlüğümü ve müşterilerin hizmetlerime olan güvenini güçlendirdi. Fares süreç boyunca hızlı iletişim ve destek sağladı.', name: 'Al-Mustafa Legal Consultancy', role: '' },
+      { quote: 'Geliştirdiği uygulama, hem benim hem de çalışma arkadaşlarımın iş süreçlerini önemli ölçüde kolaylaştırdı. Kullanımı kolay, hızlı ve pratiktir. Herhangi bir sorun yaşandığında da hızlı şekilde çözüm ve destek sağladı.', name: 'Mehmet Beşir Daye', role: 'Project Manager — Efektpharma' },
+      { quote: 'Çalışmadan çok memnun kaldım. Site kapsamlı ve güzel oldu. Süreç boyunca sürekli iletişimde kaldığımız için gerekli bölümleri birlikte revize etme fırsatımız da oldu.', name: 'Prego Education', role: '' },
+    ],
+    trustPoints: ['Gerçek Müşteri Projeleri','Günlük İş Süreçlerinde Kullanım','Arapça, İngilizce ve Türkçe','Teslimat Sonrası Destek'],
     contactLabel: 'İletişim', contactTitle: 'Birlikte Çalışalım',
     contactDesc: 'Bir iş web sitesi, yönetim paneli, randevu sistemi veya pratik bir web çözümüne ihtiyacınız varsa, iletişime geçmekten çekinmeyin.',
     contactLinkLabels: ['WhatsApp','Email','LinkedIn','GitHub','Instagram'],
@@ -440,27 +461,33 @@ function Projects() {
   );
 }
 
-/* ─── TECH STACK ─── */
-const techStack = ['Laravel','PHP','MySQL','Blade','Bootstrap','JavaScript','Git','GitHub','React basics / Learning React'];
-
-function TechStack() {
+/* ─── TRUST & TESTIMONIALS ─── */
+function TrustTestimonials() {
   const t = useT();
   return (
-    <section id="stack">
+    <section id="trust">
       <div className="container">
-        <Reveal><p className="section-label">{t.stackLabel}</p></Reveal>
-        <Reveal delay={80}><h2 className="section-title">{t.stackTitle}</h2></Reveal>
+        <Reveal><p className="section-label">{t.trustLabel}</p></Reveal>
+        <Reveal delay={80}><h2 className="section-title">{t.trustTitle}</h2></Reveal>
+        <Reveal delay={120}><p style={{ color:'#aaa79d',maxWidth:560,fontSize:15,fontWeight:300,lineHeight:1.7 }}>{t.trustDesc}</p></Reveal>
         <Reveal delay={160}>
-          <div style={{ display:'flex',flexWrap:'wrap',gap:14,marginTop:36 }}>
-            {techStack.map((tech,i) => (
-              <Reveal key={tech} delay={200+i*60}>
-                <TiltCard style={{ fontFamily:'var(--mono)',fontSize:14,fontWeight:500,color:'var(--text)',background:'var(--bg-card)',
-                  border:'1px solid var(--border)',padding:'12px 24px',borderRadius:10,cursor:'default',display:'inline-flex',alignItems:'center',gap:10 }}>
-                  <span style={{ width:6,height:6,borderRadius:'50%',background:'var(--accent)',opacity:0.6 }}></span>
-                  {tech}
+          <div style={{ display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))',gap:20,marginTop:36,alignItems:'stretch' }}>
+            {t.testimonials.map((item,i) => (
+              <Reveal key={item.name} delay={180+i*80} style={{ height:'100%' }}>
+                <TiltCard style={{ height:'100%',background:'var(--bg-card)',border:'1px solid var(--border)',borderRadius:12,padding:'24px 26px',display:'flex',flexDirection:'column',gap:18 }}>
+                  <p style={{ color:'#aaa79d',fontSize:14,fontWeight:300,lineHeight:1.75,flex:1 }}>{item.quote}</p>
+                  <div style={{ borderTop:'1px solid var(--border)',paddingTop:14 }}>
+                    <p style={{ color:'var(--text)',fontSize:14,fontWeight:500 }}>{item.name}</p>
+                    {item.role && <p style={{ color:'var(--text-secondary)',fontSize:12,fontWeight:300,lineHeight:1.5,marginTop:4 }}>{item.role}</p>}
+                  </div>
                 </TiltCard>
               </Reveal>
             ))}
+          </div>
+        </Reveal>
+        <Reveal delay={460}>
+          <div style={{ display:'flex',flexWrap:'wrap',justifyContent:'center',gap:10,marginTop:28 }}>
+            {t.trustPoints.map(point => <span key={point} style={{ fontFamily:'var(--mono)',fontSize:11,color:'var(--text-secondary)',border:'1px solid var(--border)',padding:'6px 12px',borderRadius:6 }}>{point}</span>)}
           </div>
         </Reveal>
       </div>
@@ -537,7 +564,7 @@ function App() {
       <About />
       <Services />
       <Projects />
-      <TechStack />
+      <TrustTestimonials />
       <Contact />
       <Footer />
       <TweaksPanel title="Tweaks">
