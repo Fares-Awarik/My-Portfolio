@@ -9,9 +9,9 @@ const T = {
     viewProjects: 'Discuss Your Project', contactMe: 'View Selected Work',
     serviceTags: ['Business Websites','Admin Panels','Booking','CRM','WhatsApp'],
     trustLine: 'Based in Türkiye • Available worldwide • Arabic, English & Turkish',
-    aboutLabel: 'About Me', aboutTitle: 'Building practical solutions\nfor real business needs',
-    aboutP1: 'I am a Laravel developer focused on practical digital solutions: business websites, admin panels, REST APIs, booking systems, and simple web applications that are clear and easy to manage. I am currently learning React basics to improve my frontend work.',
-    aboutP2: 'I care about structure, usability, and building projects that solve real business problems. Every part of the project should serve a clear purpose and be easy for the end user to understand.',
+    aboutLabel: 'ABOUT ME', aboutTitle: 'Practical solutions for real business needs',
+    aboutP1: "I'm Fares Awarik, a Laravel developer based in Türkiye. I build business websites, admin panels, booking systems, and custom web applications for small and growing businesses.",
+    aboutP2: 'My work spans education, pharmaceuticals, legal services, e-commerce, and service-based businesses. I focus on clear structure, practical workflows, and solutions that clients can actually use and manage.',
     servicesLabel: 'What I Build', servicesTitle: 'Services',
     servicesDesc: 'Laravel web solutions designed to work for your business from day one.',
     serviceCards: [
@@ -46,9 +46,9 @@ const T = {
     viewProjects: 'ناقش مشروعك', contactMe: 'عرض الأعمال المختارة',
     serviceTags: ['مواقع الأعمال','لوحات التحكم','الحجز','CRM','واتساب'],
     trustLine: 'مقيم في تركيا • متاح حول العالم • العربية والإنجليزية والتركية',
-    aboutLabel: 'عنّي', aboutTitle: 'بناء حلول عملية\nلاحتياجات الأعمال الحقيقية',
-    aboutP1: 'أنا مطوّر Laravel أركّز على حلول رقمية عملية: مواقع أعمال، لوحات تحكم، واجهات REST API، أنظمة حجز، وتطبيقات ويب بسيطة وواضحة وسهلة الإدارة. أتعلم حالياً أساسيات React لتحسين عملي في الواجهات.',
-    aboutP2: 'أهتم بالهيكلة وسهولة الاستخدام وبناء مشاريع تحل مشاكل أعمال حقيقية. كل جزء من المشروع يجب أن يخدم هدفاً واضحاً وأن يكون مفهوماً للمستخدم النهائي.',
+    aboutLabel: 'عني', aboutTitle: 'حلول عملية مبنية على احتياجات حقيقية للأعمال',
+    aboutP1: 'أنا فارس عواريك، مطور Laravel مقيم في تركيا. أبني مواقع أعمال، ولوحات إدارة، وأنظمة حجز، وتطبيقات ويب مخصصة للشركات الصغيرة والنامية.',
+    aboutP2: 'عملت على مشاريع في التعليم، والأدوية، والاستشارات القانونية، والتجارة الإلكترونية، وقطاع الخدمات. أركز على البنية الواضحة، وسير العمل العملي، والحلول التي يستطيع العميل استخدامها وإدارتها فعليًا.',
     servicesLabel: 'ما أبنيه', servicesTitle: 'الخدمات',
     servicesDesc: 'حلول ويب عملية باستخدام Laravel، مصممة لتعمل لصالح عملك من اليوم الأول.',
     serviceCards: [
@@ -83,9 +83,9 @@ const T = {
     viewProjects: 'Projenizi Görüşelim', contactMe: 'Seçili Çalışmaları Gör',
     serviceTags: ['İş Web Siteleri','Yönetim Panelleri','Randevu','CRM','WhatsApp'],
     trustLine: 'Türkiye merkezli • Dünya çapında müsait • Arapça, İngilizce ve Türkçe',
-    aboutLabel: 'Hakkımda', aboutTitle: 'Gerçek iş ihtiyaçları için\npratik çözümler geliştiriyorum',
-    aboutP1: "Pratik dijital çözümlere odaklanan bir Laravel geliştiricisiyim: iş web siteleri, yönetim panelleri, REST API'ler, randevu sistemleri ve yönetimi kolay web uygulamaları geliştiriyorum. Frontend tarafımı güçlendirmek için React temellerini öğreniyorum.",
-    aboutP2: 'Yapı, kullanılabilirlik ve gerçek iş problemlerini çözen projeler benim için önemlidir. Projenin her parçası net bir amaca hizmet etmeli ve son kullanıcı için anlaşılır olmalıdır.',
+    aboutLabel: 'HAKKIMDA', aboutTitle: 'Gerçek iş ihtiyaçları için pratik çözümler',
+    aboutP1: "Ben Fares Awarik, Türkiye'de yaşayan bir Laravel geliştiricisiyim. Küçük ve büyüyen işletmeler için kurumsal web siteleri, yönetim panelleri, rezervasyon sistemleri ve özel web uygulamaları geliştiriyorum.",
+    aboutP2: 'Eğitim, ilaç, hukuk, e-ticaret ve hizmet sektörlerine yönelik projeler üzerinde çalıştım. Net yapı, pratik iş akışları ve müşterilerin gerçekten kullanıp yönetebileceği çözümler geliştirmeye odaklanıyorum.',
     servicesLabel: 'Ne Geliştiriyorum', servicesTitle: 'Hizmetler',
     servicesDesc: 'İlk günden işletmeniz için çalışmak üzere tasarlanmış Laravel odaklı web çözümleri.',
     serviceCards: [
@@ -343,10 +343,10 @@ function About() {
         <Reveal delay={160}>
           <div style={{ display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(280px, 1fr))',gap:32,marginTop:32 }}>
             <div style={{ padding:28,borderRadius:12,border:'1px solid var(--border)',background:'rgba(255,255,255,0.02)',backdropFilter:'blur(8px)' }}>
-              <p style={{ color:'var(--text-secondary)',fontSize:15,fontWeight:300,lineHeight:1.8 }}>{t.aboutP1}</p>
+              <p style={{ color:'#aaa79d',fontSize:15,fontWeight:300,lineHeight:1.8 }}>{t.aboutP1}</p>
             </div>
             <div style={{ padding:28,borderRadius:12,border:'1px solid var(--border)',background:'rgba(255,255,255,0.02)',backdropFilter:'blur(8px)' }}>
-              <p style={{ color:'var(--text-secondary)',fontSize:15,fontWeight:300,lineHeight:1.8 }}>{t.aboutP2}</p>
+              <p style={{ color:'#aaa79d',fontSize:15,fontWeight:300,lineHeight:1.8 }}>{t.aboutP2}</p>
             </div>
           </div>
         </Reveal>
