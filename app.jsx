@@ -47,7 +47,7 @@ const T = {
     contactMicrocopy: 'No detailed brief is required — a short message is enough to get started.',
     contactTrustLine: 'Available for client projects in Arabic, English, and Turkish.',
     contactSocialLabels: ['LinkedIn','GitHub','Instagram'],
-    footer: '© 2026 Fares Awarik — Built with React · Deployed on GitHub Pages.',
+    footerBrand: 'Fares Awarik', footerTagline: 'Digital tools for smarter businesses.', footerRights: 'All rights reserved.',
     navItems: ['About','Services','Projects','Contact'],
   },
   ar: {
@@ -94,7 +94,7 @@ const T = {
     contactMicrocopy: 'لا تحتاج إلى تجهيز تفاصيل كاملة — رسالة قصيرة تكفي لنبدأ.',
     contactTrustLine: 'متاح لمشاريع العملاء بالعربية والتركية والإنجليزية.',
     contactSocialLabels: ['LinkedIn','GitHub','Instagram'],
-    footer: '© 2026 فارس عواريك — مبني بـ React · منشور على GitHub Pages.',
+    footerBrand: 'فارس عواريك', footerTagline: 'حلول رقمية تساعد الأعمال على العمل بذكاء أكبر.', footerRights: 'جميع الحقوق محفوظة.',
     navItems: ['عنّي','الخدمات','المشاريع','تواصل'],
   },
   tr: {
@@ -141,7 +141,7 @@ const T = {
     contactMicrocopy: 'Detaylı bir proje dosyası hazırlamanız gerekmez — başlamak için kısa bir mesaj yeterlidir.',
     contactTrustLine: 'Arapça, İngilizce ve Türkçe müşteri projelerine açığım.',
     contactSocialLabels: ['LinkedIn','GitHub','Instagram'],
-    footer: '© 2026 Fares Awarik — React ile geliştirildi · GitHub Pages üzerinde yayında.',
+    footerBrand: 'Fares Awarik', footerTagline: 'İşletmelerin daha akıllı çalışmasını sağlayan dijital çözümler.', footerRights: 'Tüm hakları saklıdır.',
     navItems: ['Hakkımda','Hizmetler','Projeler','İletişim'],
   }
 };
@@ -563,8 +563,14 @@ function Contact() {
 function Footer() {
   const t = useT();
   return (
-    <footer style={{ padding:'40px 24px',borderTop:'1px solid var(--border)',textAlign:'center' }}>
-      <p style={{ fontFamily:'var(--mono)',fontSize:12,color:'var(--text-secondary)' }}>{t.footer}</p>
+    <footer className="site-footer">
+      <div className="container footer-layout">
+        <div className="footer-brand-block">
+          <p className="footer-brand">{t.footerBrand}</p>
+          <p className="footer-tagline">{t.footerTagline}</p>
+        </div>
+        <p className="footer-copyright">© {new Date().getFullYear()} {t.footerBrand}. {t.footerRights}</p>
+      </div>
     </footer>
   );
 }
