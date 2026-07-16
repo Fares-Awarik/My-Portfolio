@@ -506,9 +506,9 @@ function TrustTestimonials() {
 
 /* ─── CONTACT ─── */
 const contactLinks = [
-  { label:'WhatsApp', href:'https://wa.me/+905538604023' },
+  { label:'WhatsApp', href:'https://wa.me/905538604023' },
   { label:'Email', href:'mailto:fares119.fh@gmail.com' },
-  { label:'LinkedIn', href:'https://www.linkedin.com/in/fares-awarik/?locale=en-US' },
+  { label:'LinkedIn', href:'https://www.linkedin.com/in/fares-awarik/' },
   { label:'GitHub', href:'https://github.com/Fares-Awarik' },
   { label:'Instagram', href:'https://www.instagram.com/fares.awarik/' },
 ];

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">FA</title>
+  <desc id="desc">Fares Awarik initials</desc>
+  <rect width="64" height="64" rx="12" fill="#08080a"/>
+  <path d="M18 46V18h28v7H26v5h16v7H26v9z" fill="#e5a83b"/>
+  <path d="M48 18v28h-8V18z" fill="#eae8e3"/>
+</svg>
